@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Player.delete_all
+Game.delete_all
+Record.delete_all
+
+player = Player.create(name: 'One', password: 1234)
+game = Game.create(title: 'tetris test')
+record = Record.create(score: 999, player: player, game: game)
+
