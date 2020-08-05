@@ -1,20 +1,23 @@
 console.log("testing...")
-
-
-document.addEventListener("DOMContentLoaded", () => {
 const player_form = document.getElementById("create-player");
 const login_info = document.getElementById("login-info");
 const player_name = document.getElementById("player-name");
 
+document.addEventListener("DOMContentLoaded", () => {
+
+
 
     player_form.addEventListener("submit", function(a){
         a.preventDefault();
+        console.log('submit pressed')
         fetchNewPlayer(a.target.name.value);
       });
 })
 
 function renderPlayer(name){
+    console.log('rendering', name)
     player_name.innerHTML = name
+    login_info.classList.remove('hidden')
 }
 
 function fetchNewPlayer(name){
@@ -30,13 +33,15 @@ function fetchNewPlayer(name){
     };
     return fetch('http://localhost:3000/players', configObj)
     .then(function(response) {
+        console.log('fetching', response)
       return response.json();
     })
     .then(function(object) {
+        console.log('then', object)
       renderPlayer(object.name);
     })
     .catch(function(error) {
+        console.log('failed', error)
       alert("Error");
-      document.body.innerHTML = error.message;
     });
   }

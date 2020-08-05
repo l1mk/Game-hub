@@ -15,6 +15,7 @@ class PlayersController < ApplicationController
         else 
         player = Player.create(name: params[:name])
         render json: player
+        end
     end
     def destroy
         player = Player.find(params[:id])
