@@ -8,7 +8,12 @@ class PlayersController < ApplicationController
         render json: player, include: [:records]
     end
     def create
-        player = Player.new(name: params[:name], password: params[:password])
+        players = Player.all
+        if players.find_by(name: params[:name]) == true
+        player = players.find_by(name: params[:name])
+        render json: player
+        else 
+        player = Player.create(name: params[:name])
         render json: player
     end
     def destroy
