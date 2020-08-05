@@ -1,11 +1,11 @@
 class PlayersController < ApplicationController
     def index
         players = Player.all 
-        render json: players, include: [:record]
+        render json: players, include: [:records]
     end
     def show
         player = Player.find(params[:id])
-        render json: player, include: [:record]
+        render json: player, include: [:records]
     end
     def create
         player = Player.new(name: params[:name], password: params[:password])
