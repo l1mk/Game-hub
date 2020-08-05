@@ -9,15 +9,15 @@ const player_name = document.getElementById("player-name");
 
     player_form.addEventListener("submit", function(a){
         a.preventDefault();
-        fetchNewPlayer(a.target.name.value, a.target.password.value);
+        fetchNewPlayer(a.target.name.value);
       });
 })
 
-function renderPlayer(name, password){
-    player_name.innerHTML = `${name} , ${password}`
+function renderPlayer(name){
+    player_name.innerHTML = name
 }
 
-function fetchNewPlayer(name, password){
+function fetchNewPlayer(name){
     let configObj = {
       method: "POST",
       headers: {
@@ -25,8 +25,7 @@ function fetchNewPlayer(name, password){
         "Accept": "application/json"
       },
       body: JSON.stringify({
-          "name": name,
-          "password": password,
+          "name": name
         })
     };
     return fetch('http://localhost:3000/players', configObj)
@@ -34,7 +33,7 @@ function fetchNewPlayer(name, password){
       return response.json();
     })
     .then(function(object) {
-      renderPlayer(object.name, object.password);
+      renderPlayer(object.name);
     })
     .catch(function(error) {
       alert("Error");
