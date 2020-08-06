@@ -21,7 +21,7 @@ function hideLogin(){
     player_form.classList.add('hidden')
     login_info.classList.remove('hidden')
     score_div.classList.remove('hidden')
-    fetchScore()
+    //fetchScore()
 }
 //function declaration: rendering of player
 function renderPlayer(name){
@@ -29,8 +29,8 @@ function renderPlayer(name){
     player_name.innerHTML = name
 }
 //function declaration: rendering of scores
-function renderScore(){
-    
+function renderScore(scores){
+    console.log('rendering', scores)
 }
 //function declaration: new player creation
 function fetchNewPlayer(name){
@@ -58,3 +58,6 @@ function fetchNewPlayer(name){
       alert("Error");
     });
   }
+  //function declaration: scores database
+  //function fetchScores(){
+  //}
