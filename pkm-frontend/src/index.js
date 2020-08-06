@@ -13,21 +13,24 @@ document.addEventListener("DOMContentLoaded", () => {
         a.preventDefault();
         console.log('submit pressed')
         fetchNewPlayer(a.target.name.value);
+        hideLogin()
       });
 })
-
-//function declartion: rendering of player
+//function declaration: hide login
+function hideLogin(){
+    player_form.classList.add('hidden')
+    login_info.classList.remove('hidden')
+    score_div.classList.remove('hidden')
+    fetchScore()
+}
+//function declaration: rendering of player
 function renderPlayer(name){
     console.log('rendering', name)
     player_name.innerHTML = name
-    login_info.classList.remove('hidden')
-    player_form.classList.add('hidden')
-    renderScore()
 }
-//function declartion: rendering of scores
+//function declaration: rendering of scores
 function renderScore(){
-score_div.classList.remove('hidden')
-fetchScore()
+    
 }
 //function declaration: new player creation
 function fetchNewPlayer(name){
