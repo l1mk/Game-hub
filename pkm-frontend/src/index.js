@@ -45,10 +45,10 @@ function renderPlayer(name){
     player_name.innerHTML = name
 }
 //function declaration: rendering of scores
-function renderScore(score){
-    console.log('rendering', score)
+function renderScore(record){
+    console.log('rendering', record)
     let li = document.createElement('li')
-    li.innerHTML = score
+    li.innerHTML = `${record.score} by ${record.player.name}`
     ul.appendChild(li)
 }
 //function declaration: new player creation
@@ -92,7 +92,7 @@ function fetchScores(){
     .then(function(records){
         console.log('then', records)
         records.forEach( (record) => {
-            renderScore(record.score);
+            renderScore(record);
         })
     })
     }

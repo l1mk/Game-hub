@@ -11,7 +11,7 @@ Player.delete_all
 Game.delete_all
 Record.delete_all
 
-player = Player.create(name: 'One', password: 1234)
+player = Player.create(name: 'One')
 game = Game.create(title: 'tetris test')
 record = Record.create(score: 999, player: player, game: game)
 
