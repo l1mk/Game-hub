@@ -1,63 +1,98 @@
 console.log("testing...")
 //variable declaration
-const player_form = document.getElementById("create-player");
-const login_info = document.getElementById("login-info");
-const player_name = document.getElementById("player-name");
-const score_div = document.getElementById("score-div")
-const scores_table = document.getElementsByClassName("score-table")[0]
+const player_form = document.getElementById('create-player-form');
+const player_name = document.getElementById('player-name');
+const page_container = document.getElementById('page-1');
+const scores_table = document.getElementById('score-table');
+const exit_bttn = document.getElementById('exit-bttn');
+const ul = document.getElementById('score-ul');
 let scores = [];
+let currentPlayer;
+
 //After dom load initial actions
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
     //submit form action
-    player_form.addEventListener("submit", function(a){
+    player_form.addEventListener('submit', function(a){
         a.preventDefault();
         console.log('submit pressed')
-        fetchNewPlayer(a.target.name.value);
+        fetchNewPlayer(a.target.name.value, a);
         hideLogin()
       });
+    //exit button action
+    exit_bttn.addEventListener("click", () => {
+        console.log('exit pressed')
+        hidePage()
+    })
+    fetchScores()
 })
 //function declaration: hide login
 function hideLogin(){
+    console.log('hide form')
     player_form.classList.add('hidden')
-    login_info.classList.remove('hidden')
-    score_div.classList.remove('hidden')
-    //fetchScore()
+    page_container.classList.remove('hidden')
+
+}
+//function declaration: hide page
+function hidePage(){
+    console.log('hide page')
+    page_container.classList.add('hidden')
+    player_form.classList.remove('hidden')
 }
 //function declaration: rendering of player
 function renderPlayer(name){
     console.log('rendering', name)
+    console.log('player', currentPlayer)
     player_name.innerHTML = name
 }
 //function declaration: rendering of scores
-function renderScore(scores){
-    console.log('rendering', scores)
+function renderScore(score){
+    console.log('rendering', score)
+    let li = document.createElement('li')
+    li.innerHTML = score
+    ul.appendChild(li)
 }
 //function declaration: new player creation
 function fetchNewPlayer(name){
+    console.log('start player fetch')
+    let formData = {
+        name: name
+    }
     let configObj = {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
-      body: JSON.stringify({
-          "name": name
-        })
+      body: JSON.stringify(formData)
     };
-    return fetch('http://localhost:3000/players', configObj)
+
+    fetch('http://localhost:3000/players', configObj)
     .then(function(response) {
-        console.log('fetching', response)
-      return response.json();
+        console.log('fetching', response);
+        return response.json();
     })
     .then(function(object) {
-        console.log('then', object)
-      renderPlayer(object.name);
+        currentPlayer = object;
+        console.log('then', object);
+        renderPlayer(currentPlayer.name);
     })
     .catch(function(error) {
-        console.log('failed', error)
-      alert("Error");
+        console.log('failed', error);
+        alert('Error');
     });
   }
-  //function declaration: scores database
-  //function fetchScores(){
-  //}
+//function declaration: scores database
+function fetchScores(){
+    console.log('start records fetch')
+    fetch('http://localhost:3000/records')
+    .then(function(response){
+        console.log('fetching', response);
+        return response.json();
+    })
+    .then(function(records){
+        console.log('then', records)
+        records.forEach( (record) => {
+            renderScore(record.score);
+        })
+    })
+    }

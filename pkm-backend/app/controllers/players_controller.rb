@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
     end
     def create
         players = Player.all
-        if players.find_by(name: params[:name]) == true
+        if players.exists?(name: params[:name])
         player = players.find_by(name: params[:name])
         render json: player
         else 

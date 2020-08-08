@@ -7,17 +7,14 @@
   </head>
   <body>
     <h1>Welcome to PokeFest</h1>
-    <div class="hidden" id="login-info"> 
-    <h3>Player:</h3><p id="player-name"></p>
-    </div>
 
-      <form id="create-player">
-        <h3>Enter Your Nickname</h3>
+      <form id="create-player-form">
+        <h3>Enter Your Name</h3>
         <input
           type="text"
           name="name"
           value=""
-          placeholder="Enter a your name..."
+          placeholder="Enter your name..."
           class="input-text"
         />
         <br />
@@ -29,12 +26,17 @@
         />
       </form>
 
-    <div class="hidden" id="score-div">  
-    <h3>Top Scores:</h3>
-    <div class="score-table"></div>
+    <container class="hidden" id="page-1">  
+    <h3>Player: </h3><p id="player-name">none</p>
+    <h3>Top Scores: </h3>
+    <div class="table" id="score-table">
+        <ul id="score-ul"></ul>
     </div>
+    <button class="button" id="exit-bttn">Exit</button>
+    </container>
 
-
-  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
+</body>
+  
 </html>
