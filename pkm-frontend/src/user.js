@@ -16,10 +16,6 @@ class User {
         console.log(player_name)
         player_name.innerHTML = name
     }
-    hi(){
-        console.log('hi')
-    }
-
     //function declaration: player score update
     updatePlayer(record, id){
         console.log('updating')

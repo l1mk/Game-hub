@@ -8,7 +8,7 @@ class RecordsController < ApplicationController
         render json: record, include: [:player, :game]
     end
     def create
-        record = Record.new(score: params[:score], player: params[:player], game: params[:game])
+        record = Record.create(score: params[:score], player_id: params[:player_id], game_id: params[:game_id])
         render json: record
     end   
     def update

@@ -7,6 +7,15 @@ const exit_bttn = document.getElementById('exit-bttn');
 const ul = document.getElementById('score-ul');
 let scores = [];
 let currentPlayer;
+let currentGame = {id: 1}
+
+//temporary test
+const enter = document.getElementById('enter')
+const a = document.getElementById('a')
+enter.addEventListener('click', function(x){
+    console.log('enter', a.value)
+    fetchNewRecord(a.value, currentPlayer.id, currentGame.id)
+})
 
 //After dom load initial actions
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         a.preventDefault();
         console.log('submit pressed')
         fetchNewPlayer(a.target.name.value)
+        fetchScores()
         hideLogin()
       });
     //exit button action
@@ -22,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('exit pressed')
         hidePage()
     })
-    fetchScores()
+  
     new CurrentTime('current-time')
 })
 //function declaration: hide login
@@ -38,12 +48,21 @@ function hidePage(){
     page_container.classList.add('hidden')
     player_form.classList.remove('hidden')
 }
-//function declaration: rendering of scores
-function renderScore(record){
-    console.log('rendering', record)
-    let li = document.createElement('li')
-    li.innerHTML = `${record.score} by ${record.player.name}`
-    ul.appendChild(li)
+//function declaration: read scores database
+function fetchScores(){
+    console.log('start all records fetch')
+    fetch('http://localhost:3000/records')
+    .then(function(response){
+        console.log('fetching', response);
+        return response.json();
+    })
+    .then(function(records){
+        console.log('then', records)
+        records.forEach( (record) => {
+            console.log('record', record)
+            let newRecord = new Score (record)
+        })
+    })
 }
 //function declaration: player creation
 function fetchNewPlayer(name){
@@ -70,22 +89,40 @@ function fetchNewPlayer(name){
          currentPlayer = new User (object)
     })
     .catch(function(error) {
-        console.log('failed', error);
+        console.log('failed player', error);
         alert('Error');
     });
 }
-//function declaration: scores database
-function fetchScores(){
-    console.log('start records fetch')
-    fetch('http://localhost:3000/records')
-    .then(function(response){
+
+//function declaration: new record
+function fetchNewRecord(score, player_id, game_id){
+    console.log('start record fetch')
+    let formData = {
+        score: score,
+        player_id: player_id,
+        game_id: game_id
+    }
+    console.log(formData)
+    let configObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    };
+
+    return fetch('http://localhost:3000/records', configObj)
+    .then(function(response) {
         console.log('fetching', response);
         return response.json();
     })
-    .then(function(records){
-        console.log('then', records)
-        records.forEach( (record) => {
-            renderScore(record);
-        })
+    .then(function(object) {
+         console.log('then', object);
+         let newRecord = new Score (object)
     })
-    }
+    .catch(function(error) {
+        console.log('failed record', error);
+        alert('Error');
+    });
+}
