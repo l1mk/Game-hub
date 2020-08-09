@@ -17,6 +17,12 @@ class PlayersController < ApplicationController
         render json: player
         end
     end
+    def update
+        player = Player.find(params[:id])
+        new_records = player.records.push(params[:record])
+        player.update(records: new_records)
+        render json: player
+    end
     def destroy
         player = Player.find(params[:id])
         player.destroy

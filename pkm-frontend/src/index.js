@@ -1,7 +1,6 @@
 console.log("testing...")
 //variable declaration
 const player_form = document.getElementById('create-player-form');
-const player_name = document.getElementById('player-name');
 const page_container = document.getElementById('page-1');
 const scores_table = document.getElementById('score-table');
 const exit_bttn = document.getElementById('exit-bttn');
@@ -15,15 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
     player_form.addEventListener('submit', function(a){
         a.preventDefault();
         console.log('submit pressed')
-        fetchNewPlayer(a.target.name.value, a);
+        fetchNewPlayer(a.target.name.value)
         hideLogin()
       });
     //exit button action
-    exit_bttn.addEventListener("click", () => {
+    exit_bttn.addEventListener('click', () => {
         console.log('exit pressed')
         hidePage()
     })
     fetchScores()
+    new CurrentTime('current-time')
 })
 //function declaration: hide login
 function hideLogin(){
@@ -38,12 +38,6 @@ function hidePage(){
     page_container.classList.add('hidden')
     player_form.classList.remove('hidden')
 }
-//function declaration: rendering of player
-function renderPlayer(name){
-    console.log('rendering', name)
-    console.log('player', currentPlayer)
-    player_name.innerHTML = name
-}
 //function declaration: rendering of scores
 function renderScore(record){
     console.log('rendering', record)
@@ -51,7 +45,7 @@ function renderScore(record){
     li.innerHTML = `${record.score} by ${record.player.name}`
     ul.appendChild(li)
 }
-//function declaration: new player creation
+//function declaration: player creation
 function fetchNewPlayer(name){
     console.log('start player fetch')
     let formData = {
@@ -66,21 +60,20 @@ function fetchNewPlayer(name){
       body: JSON.stringify(formData)
     };
 
-    fetch('http://localhost:3000/players', configObj)
+    return fetch('http://localhost:3000/players', configObj)
     .then(function(response) {
         console.log('fetching', response);
         return response.json();
     })
     .then(function(object) {
-        currentPlayer = object;
-        console.log('then', object);
-        renderPlayer(currentPlayer.name);
+         console.log('then', object);
+         currentPlayer = new User (object)
     })
     .catch(function(error) {
         console.log('failed', error);
         alert('Error');
     });
-  }
+}
 //function declaration: scores database
 function fetchScores(){
     console.log('start records fetch')
