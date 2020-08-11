@@ -4,10 +4,12 @@ const player_form = document.getElementById('create-player-form');
 const page_container = document.getElementById('page-1');
 const scores_table = document.getElementById('score-table');
 const exit_bttn = document.getElementById('exit-bttn');
+const score_switch = document.getElementById('score-switch')
+const score_title = document.getElementById('score-title')
 const ul = document.getElementById('score-ul');
 let scores = [];
 let currentPlayer;
-let currentGame = {id: 1}
+let currentGame = {title: 'tetris test', id: 1}
 
 //temporary test
 const enter = document.getElementById('enter')
@@ -27,6 +29,25 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchScores()
         hideLogin()
       });
+    //togle scores switch
+    score_switch.addEventListener('click', () => {
+        console.log('toglee pressed')
+        let li = document.getElementsByTagName('li');
+        if (score_title.textContent === 'Top Scores') {
+        score_title.innerHTML = 'Player Bests'
+            for (let i =0; i<li.length; i++){
+                if (!li[i].textContent.includes(`${currentPlayer.name}`)){
+                    li[i].classList.add('hidden');
+                }
+            }
+        } else if (score_title.textContent === 'Player Bests') {
+        score_title.innerHTML = 'Top Scores'
+            for (let i =0; i<li.length; i++){
+                li[i].classList.remove('hidden');
+            }
+        }
+    })
+
     //exit button action
     exit_bttn.addEventListener('click', () => {
         console.log('exit pressed')

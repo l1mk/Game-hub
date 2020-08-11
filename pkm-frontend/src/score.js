@@ -15,7 +15,11 @@ class Score {
     render(score){
         console.log('rendering', score)
         let li = document.createElement('li')
-        li.innerHTML = `${score} by ${this.player.name} in ${this.game.title}`
+        if (this.player && this.game) {
+            li.innerHTML = `${score} by ${this.player.name} in ${this.game.title}`
+        } else {
+            li.innerHTML = `${score} by ${currentPlayer.name} in ${currentGame.title}`
+        }
         ul.appendChild(li)
     }
 
