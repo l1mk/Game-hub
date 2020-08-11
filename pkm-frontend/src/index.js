@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         a.preventDefault();
         console.log('submit pressed')
         fetchNewPlayer(a.target.name.value)
-        fetchScores()
+        fetchRecords()
         hideLogin()
       });
     //togle scores switch
@@ -76,8 +76,8 @@ function hidePage(){
     page_container.classList.add('hidden')
     player_form.classList.remove('hidden')
 }
-//function declaration: read scores database
-function fetchScores(){
+//function declaration: read records database
+function fetchRecords(){
     console.log('start all records fetch')
     fetch('http://localhost:3000/records')
     .then(function(response){
@@ -88,7 +88,7 @@ function fetchScores(){
         console.log('then', records)
         records.forEach( (record) => {
             console.log('record', record)
-            let newRecord = new Score (record)
+            let newRecord = new Record (record)
         })
     })
 }
@@ -114,7 +114,7 @@ function fetchNewPlayer(name){
     })
     .then(function(object) {
         console.log('then', object);
-        currentPlayer = new User (object)
+        currentPlayer = new Player (object)
     })
     .catch(function(error) {
         console.log('failed player', error);
@@ -147,7 +147,7 @@ function fetchNewRecord(score, player_id, game_id){
     })
     .then(function(object) {
         console.log('then', object);
-        let newRecord = new Score (object)
+        let newRecord = new Record (object)
     })
     .catch(function(error) {
         console.log('failed record', error);
@@ -155,7 +155,7 @@ function fetchNewRecord(score, player_id, game_id){
     });
 }
 
-//function declaration: new record
+//function declaration: new game
 function fetchNewGame(title){
     console.log('start game fetch')
     let formData = {
@@ -181,7 +181,7 @@ function fetchNewGame(title){
         currentGame = new Game (object)
     })
     .catch(function(error) {
-        console.log('failed record', error);
+        console.log('failed game', error);
         alert('Error');
     });
 }

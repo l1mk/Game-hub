@@ -1,4 +1,4 @@
-class User {
+class Player {
     constructor(argument){
         console.log('new user been created', argument)
     this.name = argument.name

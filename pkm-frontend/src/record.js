@@ -1,4 +1,4 @@
-class Score {
+class Record {
     constructor(argument){
         console.log('new score class been created', argument)
     this.score = argument.score
