@@ -8,7 +8,13 @@ class GamesController < ApplicationController
         render json: game, include: [:records]
     end
     def create
-        game = Game.new(params[:title])
+        games = Game.all
+        if games.exists?(title: params[:title])
+        game = games.find_by(title: params[:title])
         render json: game
+        else 
+        game = Game.create(title: params[:title])
+        render json: game
+        end
     end
 end

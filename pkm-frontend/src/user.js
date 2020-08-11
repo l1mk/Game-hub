@@ -1,5 +1,3 @@
-// class to render the current time
-
 class User {
     constructor(argument){
         console.log('new user been created', argument)

@@ -1,5 +1,3 @@
-// class to render the current time
-
 class Score {
     constructor(argument){
         console.log('new score class been created', argument)

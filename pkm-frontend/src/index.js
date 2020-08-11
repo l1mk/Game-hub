@@ -9,7 +9,7 @@ const score_title = document.getElementById('score-title')
 const ul = document.getElementById('score-ul');
 let scores = [];
 let currentPlayer;
-let currentGame = {title: 'tetris test', id: 1}
+let currentGame;
 
 //temporary test
 const enter = document.getElementById('enter')
@@ -17,6 +17,13 @@ const a = document.getElementById('a')
 enter.addEventListener('click', function(x){
     console.log('enter', a.value)
     fetchNewRecord(a.value, currentPlayer.id, currentGame.id)
+})
+
+//temporary test 2
+const start = document.getElementById('start-game')
+start.addEventListener('click', function(x){
+    console.log('clicked', x)
+    fetchNewGame(start.textContent)
 })
 
 //After dom load initial actions
@@ -106,8 +113,8 @@ function fetchNewPlayer(name){
         return response.json();
     })
     .then(function(object) {
-         console.log('then', object);
-         currentPlayer = new User (object)
+        console.log('then', object);
+        currentPlayer = new User (object)
     })
     .catch(function(error) {
         console.log('failed player', error);
@@ -139,8 +146,39 @@ function fetchNewRecord(score, player_id, game_id){
         return response.json();
     })
     .then(function(object) {
-         console.log('then', object);
-         let newRecord = new Score (object)
+        console.log('then', object);
+        let newRecord = new Score (object)
+    })
+    .catch(function(error) {
+        console.log('failed record', error);
+        alert('Error');
+    });
+}
+
+//function declaration: new record
+function fetchNewGame(title){
+    console.log('start game fetch')
+    let formData = {
+        title: title,
+    }
+    console.log(formData)
+    let configObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    };
+
+    return fetch('http://localhost:3000/games', configObj)
+    .then(function(response) {
+        console.log('fetching', response);
+        return response.json();
+    })
+    .then(function(object) {
+        console.log('then', object);
+        currentGame = new Game (object)
     })
     .catch(function(error) {
         console.log('failed record', error);
