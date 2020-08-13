@@ -1,0 +1,15 @@
+/* memory unique game style */
+.card {
+    height: 60px;
+    width: 60px;
+}
+
+.grid #memory-grid {
+    height: 360px;
+    width: 360px;
+}
+
+.border #memory-border {
+    background-image: url('images/memory/border.jpeg');
+    background-size: cover;
+}
