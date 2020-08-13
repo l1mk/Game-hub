@@ -2,12 +2,17 @@
     display: none
 }
 
+#current-time {
+font-size: x-small;
+float: right;
+}
+
 .header {
     padding: 10px;
     background-color: black;
     color: white;
     border: solid 5px;
-    font-size: 30px;
+    font-size: 15px;
 }
 
 nav {
@@ -45,117 +50,4 @@ p {
     display: flex;
     flex-flow: row wrap;
     margin: auto;
-}
-/* memory unique game style */
-.card {
-    height: 60px;
-    width: 60px;
-}
-
-.grid #memory-grid {
-    height: 360px;
-    width: 360px;
-}
-
-.border #memory-border {
-    background-image: url('images/memory/border.jpeg');
-    background-size: cover;
-}
-
-/* whackamole unique game style */
-
-.border #whack-border {
-    background-image: url('images/whack/border.png');
-    background-size: cover;
-}
-
-.square {
-    width: 45px;
-    height: 45px;
-    background-image: url('images/whack/hole.png');
-    background-size: cover;
-}
-
-.grid #whack-grid{
-    border: solid 2px;
-    justify-content: center;
-    align-content: center;
-    width: 310px;
-    height: 360px;
-    
-}
-
-.moleA{
-    background-image: url('images/DiglettA.png');
-    background-size: cover;
-}
-
-.moleB{
-    background-image: url('images/DiglettB.png');
-    background-size: cover;
-}
-
-.moleC{
-    background-image: url('images/DrilburA.png');
-    background-size: cover;
-}
-
-.moleD{
-    background-image: url('images/DrilburB.png');
-    background-size: cover;
-}
-
-.moleE{
-    background-image: url('images/DugtrioA.png');
-    background-size: cover;
-}
-
-.moleF{
-    background-image: url('images/DugtrioB.png');
-    background-size: cover;
-}
-
-.moleG{
-    background-image: url('images/ExcadrillA.png');
-    background-size: cover;
-}
-
-.moleH{
-    background-image: url('images/ExcadrillB.png');
-    background-size: cover;
-}
-
-.moleI{
-    background-image: url('images/GolemA.png');
-    background-size: cover;
-}
-
-.moleJ{
-    background-image: url('images/GolemB.png');
-    background-size: cover;
-}
-
-.moleK{
-    background-image: url('images/SandslashA.png');
-    background-size: cover;
-}
-
-.moleL{
-    background-image: url('images/SandslashB.png');
-    background-size: cover;
-}
-
-.moleM{
-    background-image: url('images/TriA.png');
-    background-size: cover;
-}
-
-.moleN{
-    background-image: url('images/TriB.png');
-    background-size: cover;
-}
-
-.punch{
-    background-image: url('images/punch.png');
-    background-size: cover;
 }

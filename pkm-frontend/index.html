@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="current-time"></div>
-    <h1>Welcome to PokeFest</h1>
+    <h1 id="welcome">Welcome to PokeFest</h1>
 
       <form id="create-player-form">
         <h3>Enter Your Name</h3>
@@ -30,7 +30,7 @@
       </form>
 
     <container class="hidden" id="page-1">  
-
+      <h3>Logged as: <span id="player-name"></span></h3>
         
         <input
           id="a"
@@ -48,7 +48,7 @@
         />
 
 
-    <h3>Player: </h3><p id="player-name">none</p>
+    
 
     <button type="button" class="button" id="start-game">Game 1</button><br>
 
@@ -56,6 +56,19 @@
     <h3 id="score-title">Top Scores</h3>
     <div class="table" id="score-table">
         <ul id="score-ul"></ul>
+    </div>
+
+    <div class="header">
+    <h1>Whack-a-Digger</h1>
+    <nav>Top Score: <span id="top">None</span></nav>
+    </div>
+    <h3>Player: </h3><span id="player-name">none</span>
+    <h3>Score: </h3><span id="score-value">0</span>
+    <h3>Timer: </h3><span id="time-left">60</span>
+    <br>
+    <br>
+    <div class="border">
+        <div class="grid"></div>
     </div>
 
     </div>
