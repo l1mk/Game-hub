@@ -1,12 +1,13 @@
 console.log("testing...")
 //variable declaration
 const player_form = document.getElementById('create-player-form');
-const page_container = document.getElementById('page-1');
+const logged_page_container = document.getElementById('logged-page');
 const scores_table = document.getElementById('score-table');
 const exit_bttn = document.getElementById('exit-bttn');
 const score_switch = document.getElementById('score-switch')
 const score_title = document.getElementById('score-title')
 const ul = document.getElementById('score-ul');
+const logout_link = document.getElementById('logout')
 let scores = [];
 let currentPlayer;
 let currentGame;
@@ -54,11 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     })
-
     //exit button action
     exit_bttn.addEventListener('click', () => {
         console.log('exit pressed')
-        hidePage()
+        //hideGame()
     })
   
     new CurrentTime('current-time')
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function hideLogin(){
     console.log('hide form')
     player_form.classList.add('hidden')
-    page_container.classList.remove('hidden')
+    logged_page_container.classList.remove('hidden')
 
 }
 //function declaration: hide page
@@ -76,6 +76,16 @@ function hidePage(){
     page_container.classList.add('hidden')
     player_form.classList.remove('hidden')
 }
+
+//function declaration: logout
+//function logout(){
+//    console.log('logout')
+//    currentPlayer = null
+//    player_form.classList.remove('hidden')
+//    hidePage()
+//    hideGame()
+//}
+
 //function declaration: read records database
 function fetchRecords(){
     console.log('start all records fetch')
