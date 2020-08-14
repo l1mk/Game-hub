@@ -18,6 +18,9 @@
     font-size: xx-small;
 }
 
+#current-time {
+    font-size: xx-small;
+}
 .header {
     padding: 10px;
     color: black;

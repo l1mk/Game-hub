@@ -11,6 +11,7 @@ const logout_link = document.getElementById('logout')
 const game_hud = document.getElementById('game-hud')
 let scores = [];
 let currentPlayer;
+let currentPlayerName;
 let currentGame;
 
 //temporary test
@@ -42,17 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     //togle scores switch
     score_switch.addEventListener('click', () => {
-        console.log('toglee pressed')
+        console.log('toglee pressed', score_switch.value)
+
         let li = document.getElementsByTagName('li');
-        if (score_title.textContent === 'Top Scores') {
-        score_title.innerHTML = 'Player Bests'
+        if (score_title.textContent === 'All Top Scores') {
+        score_title.innerHTML = `Player ${currentPlayerName} Bests`
             for (let i =0; i<li.length; i++){
                 if (!li[i].textContent.includes(`${currentPlayer.name}`)){
                     li[i].classList.add('hidden');
                 }
             }
-        } else if (score_title.textContent === 'Player Bests') {
-        score_title.innerHTML = 'Top Scores'
+        } else if (score_title.textContent === `Player ${currentPlayerName} Bests`) {
+        score_title.innerHTML = 'All Top Scores'
             for (let i =0; i<li.length; i++){
                 li[i].classList.remove('hidden');
             }
@@ -66,6 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
   
     new CurrentTime('current-time')
 })
+//function declaration: capitalize names
+function capitalize(name){
+return name.charAt(0).toUpperCase() + name.slice(1)
+}
+
 //function declaration: hide login
 function hideLogin(){
     console.log('hide form')
@@ -128,6 +135,7 @@ function fetchNewPlayer(name){
     .then(function(object) {
         console.log('then', object);
         currentPlayer = new Player (object)
+        currentPlayerName = capitalize(currentPlayer.name)
     })
     .catch(function(error) {
         console.log('failed player', error);

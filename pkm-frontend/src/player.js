@@ -12,7 +12,7 @@ class Player {
         console.log('rendering', name)
         const player_name = document.getElementById('player-name');
         console.log(player_name)
-        player_name.innerHTML = name
+        player_name.innerHTML = capitalize(name)
     }
     //function declaration: player score update
     updatePlayer(record, id){
