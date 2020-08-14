@@ -1,8 +1,13 @@
 
 /* whackamole unique game style */
 
-.border #whack-border {
-    background-image: url('images/whack/border.png');
+#whack-border {
+    display: flex;
+    flex-wrap: wrap;
+    height: 450px;
+    width: 450px;
+    margin: auto;
+    background-image: url('images/whack/Whackborder.png');
     background-size: cover;
 }
 
@@ -13,7 +18,10 @@
     background-size: cover;
 }
 
-.grid #whack-grid{
+#whack-grid{
+    display: flex;
+    flex-flow: row wrap;
+    margin: auto;
     border: solid 2px;
     justify-content: center;
     align-content: center;

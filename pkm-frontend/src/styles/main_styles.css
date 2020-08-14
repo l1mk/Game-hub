@@ -47,16 +47,5 @@ p {
     font-size: xx-small;
 }
 
-.border {
-    display: flex;
-    flex-wrap: wrap;
-    height: 450px;
-    width: 450px;
-    margin: auto;
-}
 
-.grid {
-    display: flex;
-    flex-flow: row wrap;
-    margin: auto;
-}
+

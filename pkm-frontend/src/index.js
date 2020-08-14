@@ -3,7 +3,6 @@ console.log("testing...")
 const player_form = document.getElementById('create-player-form');
 const logged_page_container = document.getElementById('logged-page');
 const scores_table = document.getElementById('score-table');
-const exit_bttn = document.getElementById('exit-bttn');
 const score_switch = document.getElementById('score-switch')
 const score_title = document.getElementById('score-title')
 const ul = document.getElementById('score-ul');
@@ -23,11 +22,12 @@ enter.addEventListener('click', function(x){
 })
 
 //temporary test 2
-const start = document.getElementById('start-game')
-start.addEventListener('click', function(x){
+const startGame = document.getElementById('start-game')
+startGame.addEventListener('click', function(x){
     console.log('clicked', x)
-    fetchNewGame(start.textContent)
+    fetchNewGame(startGame.textContent)
     game_hud.classList.remove('hidden')
+    gameRendering()
 
 })
 
@@ -60,12 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     })
-    //exit button action
-    exit_bttn.addEventListener('click', () => {
-        console.log('exit pressed')
-        //hideGame()
-    })
-  
     new CurrentTime('current-time')
 })
 //function declaration: capitalize names
