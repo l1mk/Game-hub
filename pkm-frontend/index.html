@@ -5,10 +5,11 @@
     <link rel="stylesheet" href="src/styles/main_styles.css">
     <link rel="stylesheet" href="src/styles/memory_styles.css">
     <link rel="stylesheet" href="src/styles/whack_styles.css">
+    <link rel="stylesheet" href="src/styles/switch_styles.css">
     <title>Pokemon Project</title>
   </head>
   <body>
-    <div id="current-time"></div>
+    <div class="right-data" id="current-time"></div>
     <h1 id="welcome">Welcome to PokeFest</h1>
       <form id="create-player-form">
         <h3>Enter Your Name</h3>
@@ -48,19 +49,26 @@
 
     
     <button type="button" class="button" id="start-game">Game 1</button><br>
-
-    <button type="button" class="button" id="score-switch">All/Personal</button>
-    <h3 id="score-title">Top Scores</h3>
-    <div class="table" id="score-table">
-        <ul id="score-ul"></ul>
+    <div class="right-data"> 
+    <label class="switch">
+      <input type="checkbox">
+      <span class="slider"></span>
+    </label>
+    <br><br>
+      <span id="score-title">All Top Scores</span>
+      <br><br>
+      <div class="table" id="score-table">
+          <ul id="score-ul"></ul>
+      </div>
     </div>
-      <container class="hidden" id="game">
+
+      <container class="hidden" id="game-hud">
         <div class="header">
-          <h1>Whack-a-Digger</h1>
-          <nav>Top Score: <span id="top">None</span></nav>
+          <h4 id="game-title">Whack-a-Digger</h4>
         </div>
-        <h3>Score: </h3><span id="score-value">0</span>
-        <h3>Timer: </h3><span id="time-left">60</span>
+        <h5>Top Score: </h5><span class="small" id="top">None</span>
+        <h5>Score: </h5><span class="small" id="score-value">0</span>
+        <h5>Timer: </h5><span class="small" id="time-left">60</span>
         <br>
         <br>
 

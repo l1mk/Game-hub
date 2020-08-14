@@ -8,6 +8,7 @@ const score_switch = document.getElementById('score-switch')
 const score_title = document.getElementById('score-title')
 const ul = document.getElementById('score-ul');
 const logout_link = document.getElementById('logout')
+const game_hud = document.getElementById('game-hud')
 let scores = [];
 let currentPlayer;
 let currentGame;
@@ -25,6 +26,8 @@ const start = document.getElementById('start-game')
 start.addEventListener('click', function(x){
     console.log('clicked', x)
     fetchNewGame(start.textContent)
+    game_hud.classList.remove('hidden')
+
 })
 
 //After dom load initial actions

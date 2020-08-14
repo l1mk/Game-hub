@@ -2,24 +2,30 @@
     display: none
 }
 
-#current-time {
-font-size: x-small;
-float: right;
+.right-data {
+    float: right;
+}
+
+#score-title {
+    margin-top: 10px;
+    float: right;
+    text-align: right;
+    font-size: medium;
+    padding-right: 10px;
+}
+
+#score-table {
+    font-size: xx-small;
 }
 
 .header {
     padding: 10px;
-    background-color: black;
-    color: white;
-    border: solid 5px;
-    font-size: 15px;
+    color: black;
+    font-size: 20px;
 }
 
-nav {
-    float: right;
-    font-size: 15px;
-    position: relative;
-    bottom: 20px 
+.small{
+    font-size: x-small;
 }
 
 h1 {
