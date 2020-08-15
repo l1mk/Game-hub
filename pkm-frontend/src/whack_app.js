@@ -168,7 +168,7 @@ function exit(){
      startBttn.textContent = 'Start'
      destroyHoles()
      hideGame()
-     currentGame = null
+     currentGame = undefined
 }
 //start button action
 startBttn.addEventListener('click', start)

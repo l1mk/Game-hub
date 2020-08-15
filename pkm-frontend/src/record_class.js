@@ -20,5 +20,12 @@ class Record {
         }
         ul.appendChild(li)
     }
+    //destroy all li
+    static destroyScores(){
+        while (ul.firstChild) {
+            console.log('destroying li')
+            ul.removeChild(ul.lastChild);
+          }
+    }
 
 }

@@ -47,15 +47,15 @@ document.addEventListener('DOMContentLoaded', () => {
     logout_link.addEventListener('click', (a) => {
         console.log('logout clicked')
         a.preventDefault()
-        let currentPlayer = null
-        let currentPlayerName = null
-        let currentGame = null
+        let currentPlayer = undefined
+        let currentPlayerName = undefined
+        score_title.innerHTML = 'All Top Scores'
         exit()
         hideGame()
         hideMenu()
         logged_page_container.classList.add('hidden')
         player_form.classList.remove('hidden')
-
+        Record.destroyScores()
     })
     //togle scores switch
     score_switch.addEventListener('click', () => {
