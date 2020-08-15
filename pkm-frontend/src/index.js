@@ -1,18 +1,18 @@
 console.log("booting...")
 //variable declaration
-const player_form = document.getElementById('create-player-form');
-const logged_page_container = document.getElementById('logged-page');
-const scores_table = document.getElementById('score-table');
+const player_form = document.getElementById('create-player-form')
+const logged_page_container = document.getElementById('logged-page')
+const scores_table = document.getElementById('score-table')
 const score_switch = document.getElementById('score-switch')
 const score_title = document.getElementById('score-title')
-const ul = document.getElementById('score-ul');
+const ul = document.getElementById('score-ul')
 const logout_link = document.getElementById('logout')
 const game_hud = document.getElementById('game-hud')
 const game_selection = document.getElementById('game-selection')
-let scores = [];
-let currentPlayer;
-let currentPlayerName;
-let currentGame;
+let scores = []
+let currentPlayer
+let currentPlayerName
+let currentGame
 
 //temporary test
 const enter = document.getElementById('enter')
@@ -43,6 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchRecords()
         hideLogin()
       });
+    //logout link
+    logout_link.addEventListener('click', (a) => {
+        console.log('logout clicked')
+        a.preventDefault()
+        let currentPlayer = null
+        let currentPlayerName = null
+        let currentGame = null
+        exit()
+        hideGame()
+        hideMenu()
+        logged_page_container.classList.add('hidden')
+        player_form.classList.remove('hidden')
+
+    })
     //togle scores switch
     score_switch.addEventListener('click', () => {
         console.log('toglee pressed', score_switch.value)
@@ -82,9 +96,9 @@ function hideLogin(){
 
 }
 //function declaration: hide menu
-      function hideMenu(){
-      console.log('hide menu')
-      game_selection.classList.add('hidden')
+function hideMenu(){
+    console.log('hide menu')
+game_selection.classList.add('hidden')
 }
 
 //function declaratio: hide game

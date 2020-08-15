@@ -143,35 +143,20 @@ function start(){
 }
 //reset
 function reset(){
-        console.log('reset button pressed')
-        clearInterval(timerId)
-        clearInterval(timerMove)
-        molesHitted = 0
-        molesScore.textContent = molesHitted
-        currentTime = 30
-        timeLeft.textContent = currentTime
-        timerId = setInterval(countDown, 1000)
-        gameOver = false
-        moveMole()
-        startBttn.textContent = 'Pause'
-    }
-//start button action
-startBttn.addEventListener('click', start)
-//reset button action
-resetBttn.addEventListener('click', reset)
-//instruction button action
-instBtn.addEventListener('click', () =>{
-    console.log('instruction button pressed')
-    if (instBtn.innerHTML === 'Instructions'){
-     instBtn.innerHTML = 'Hide'
-     instruction.style.display = 'block'
-    } else if (instBtn.innerHTML === 'Hide'){
-     instBtn.innerHTML = 'Instructions'
-     instruction.style.display = 'none'  
-    }
- })
- //exit button action
- exitBttn.addEventListener('click', () => {
+    console.log('reset button pressed')
+    clearInterval(timerId)
+    clearInterval(timerMove)
+    molesHitted = 0
+    molesScore.textContent = molesHitted
+    currentTime = 30
+    timeLeft.textContent = currentTime
+    timerId = setInterval(countDown, 1000)
+    gameOver = false
+    moveMole()
+    startBttn.textContent = 'Pause'
+}
+//exit game
+function exit(){
     console.log('exit pressed')
      reset()
      gameOver = true
@@ -183,4 +168,25 @@ instBtn.addEventListener('click', () =>{
      startBttn.textContent = 'Start'
      destroyHoles()
      hideGame()
-    })
+     currentGame = null
+}
+//start button action
+startBttn.addEventListener('click', start)
+//reset button action
+resetBttn.addEventListener('click', reset)
+//exit button action
+exitBttn.addEventListener('click', exit)
+//instruction button action
+instBtn.addEventListener('click', () =>{
+    console.log('instruction button pressed')
+    if (instBtn.innerHTML === 'Instructions'){
+     instBtn.innerHTML = 'Hide'
+     instruction.style.display = 'block'
+    } else if (instBtn.innerHTML === 'Hide'){
+     instBtn.innerHTML = 'Instructions'
+     instruction.style.display = 'none'  
+    }
+ })
+
+
+
