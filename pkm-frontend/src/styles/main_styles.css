@@ -6,6 +6,10 @@
     float: right;
 }
 
+.left-data{
+    float: left;
+}
+
 #score-title {
     margin-top: 10px;
     float: right;

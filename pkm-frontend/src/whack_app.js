@@ -105,9 +105,10 @@ function countDown(){
         gameOver = true
         if (topScore < molesHitted){
             topScore = molesHitted
-            topWhackaScore.innerHTML = `${topScore} by Player1`
+            topWhackaScore.innerHTML = `${topScore} points by ${currentPlayerName}`
         }
-        alert('Game Over, Final score is ' + molesHitted)
+        console.log('Game Over', gameOver, 'Final score is ', molesHitted)
+        fetchNewRecord(molesHitted, currentPlayer.id, currentGame.id)
     }
 }
 //punch

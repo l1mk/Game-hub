@@ -6,7 +6,7 @@ class Record {
     this.game = argument.game
     this.created = argument.created_at
     this.id = argument.id
-    console.log(this.player, this.game)
+    console.log(argument.player, 'is', this.player)
     this.render(this.score)
     }
     //score rendering
