@@ -33,7 +33,7 @@ function divCreation(){
     squares.forEach(element => {
         element.addEventListener('mouseup', () => {
         console.log('clicked a square')
-        if (element.id === hitPosition){
+        if (element.id === hitPosition && startBttn.textContent === 'Pause'){
             if (hitMole === 'moleA' || hitMole == 'moleB' || hitMole === 'moleE' || hitMole == 'moleF'){
                 molesHitted = molesHitted +4
                 molesScore.textContent = molesHitted
