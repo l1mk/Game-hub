@@ -150,6 +150,7 @@ function reset(){
         timerId = setInterval(countDown, 1000)
         gameOver = false
         moveMole()
+        startBttn.textContent = 'Pause'
     }
 //start button action
 startBttn.addEventListener('click', start)
@@ -168,5 +169,12 @@ instBtn.addEventListener('click', () =>{
  //exit button action
  exitBttn.addEventListener('click', () => {
     console.log('exit pressed')
-    //hideGame()
+     reset()
+     gameOver = true
+     clearInterval(timerMove)
+     molesHitted = 0
+     molesScore.textContent = molesHitted
+     currentTime = 30
+     startBttn.textContent = 'Start'
+    hideGame()
     })

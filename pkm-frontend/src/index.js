@@ -8,6 +8,7 @@ const score_title = document.getElementById('score-title')
 const ul = document.getElementById('score-ul');
 const logout_link = document.getElementById('logout')
 const game_hud = document.getElementById('game-hud')
+const game_selection = document.getElementById('game-selection')
 let scores = [];
 let currentPlayer;
 let currentPlayerName;
@@ -28,6 +29,7 @@ startGame.addEventListener('click', function(x){
     fetchNewGame(startGame.textContent)
     game_hud.classList.remove('hidden')
     gameRendering()
+    hideMenu()
 
 })
 
@@ -37,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     player_form.addEventListener('submit', function(a){
         a.preventDefault();
         console.log('submit pressed')
+        menu()
         fetchNewPlayer(a.target.name.value)
         fetchRecords()
         hideLogin()
@@ -66,6 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
 function capitalize(name){
 return name.charAt(0).toUpperCase() + name.slice(1)
 }
+//function declaration: show menu  
+function menu(){
+    console.log('show menu')
+    game_selection.classList.remove('hidden')
+}
 
 //function declaration: hide login
 function hideLogin(){
@@ -74,21 +82,18 @@ function hideLogin(){
     logged_page_container.classList.remove('hidden')
 
 }
-//function declaration: hide page
-function hidePage(){
-    console.log('hide page')
-    page_container.classList.add('hidden')
-    player_form.classList.remove('hidden')
+//function declaration: hide menu
+      function hideMenu(){
+      console.log('hide menu')
+      game_selection.classList.add('hidden')
 }
 
-//function declaration: logout
-//function logout(){
-//    console.log('logout')
-//    currentPlayer = null
-//    player_form.classList.remove('hidden')
-//    hidePage()
-//    hideGame()
-//}
+//function declaratio: hide game
+function hideGame(){
+    console.log('hide game')
+    game_hud.classList.add('hidden')
+    page_container.classList.add('hidden')
+}
 
 //function declaration: read records database
 function fetchRecords(){
