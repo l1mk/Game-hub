@@ -1,9 +1,4 @@
-
-
-
-
 //variables setup    
-
 const moleA = document.querySelectorAll('.moleA')
 const moleB = document.querySelectorAll('.moleB')
 const timeLeft = document.querySelector('#time-left')
@@ -88,7 +83,6 @@ function randomSquare(){
     console.log(hitPosition)
     hitMole = randomMole
 }
-
 //move mole
 function moveMole(){
     timerMove = null
@@ -109,6 +103,7 @@ function countDown(){
         }
         console.log('Game Over', gameOver, 'Final score is ', molesHitted)
         fetchNewRecord(molesHitted, currentPlayer.id, currentGame.id)
+        alert('Game is Over')
     }
 }
 //punch
@@ -116,9 +111,16 @@ function punch(){
     this.classList.add('punch')
     setTimeout(() => this.classList.remove('punch'), 250)
 }
+//destroy all created div
+function destroyHoles(){
+    while (grid.firstChild) {
+        console.log('destroying divs')
+        grid.removeChild(grid.lastChild);
+      }
+}
 //start-pause
 function start(){
-    console.log('clicked button')
+    console.log('clicked start/pause button')
     if (startBttn.textContent === 'Pause'){
         console.log('Pause')
         clearInterval(timerId)
@@ -141,6 +143,7 @@ function start(){
 }
 //reset
 function reset(){
+        console.log('reset button pressed')
         clearInterval(timerId)
         clearInterval(timerMove)
         molesHitted = 0
@@ -158,6 +161,7 @@ startBttn.addEventListener('click', start)
 resetBttn.addEventListener('click', reset)
 //instruction button action
 instBtn.addEventListener('click', () =>{
+    console.log('instruction button pressed')
     if (instBtn.innerHTML === 'Instructions'){
      instBtn.innerHTML = 'Hide'
      instruction.style.display = 'block'
@@ -171,10 +175,12 @@ instBtn.addEventListener('click', () =>{
     console.log('exit pressed')
      reset()
      gameOver = true
+     clearInterval(timerId)
      clearInterval(timerMove)
      molesHitted = 0
      molesScore.textContent = molesHitted
      currentTime = 30
      startBttn.textContent = 'Start'
-    hideGame()
+     destroyHoles()
+     hideGame()
     })

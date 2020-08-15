@@ -1,4 +1,4 @@
-console.log("testing...")
+console.log("booting...")
 //variable declaration
 const player_form = document.getElementById('create-player-form');
 const logged_page_container = document.getElementById('logged-page');
@@ -30,7 +30,6 @@ startGame.addEventListener('click', function(x){
     game_hud.classList.remove('hidden')
     gameRendering()
     hideMenu()
-
 })
 
 //After dom load initial actions
@@ -92,7 +91,7 @@ function hideLogin(){
 function hideGame(){
     console.log('hide game')
     game_hud.classList.add('hidden')
-    page_container.classList.add('hidden')
+    menu()
 }
 
 //function declaration: read records database
