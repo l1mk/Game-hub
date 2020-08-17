@@ -1,24 +1,9 @@
 //variables setup    
-const moleA = document.querySelectorAll('.moleA')
-const moleB = document.querySelectorAll('.moleB')
-const timeLeft = document.querySelector('#time-left')
-const startBttn = document.querySelector('#start-pause')
-const resetBttn = document.querySelector('#reset')
-const exitBttn = document.getElementById('exit-bttn')
-const instBtn = document.querySelector('#inst-Btn')
-const instruction = document.querySelector('#instructions')
 let topWhackaScore = document.getElementById('top')
-let grid = document.getElementsByClassName('grid')[0]
-let border = document.getElementsByClassName('border')[0]
 let molesScore = document.querySelector('#score-value')
-let topScore = 0
 let molesHitted = 0
-let currentTime = timeLeft.textContent
-let gameOver = false
 let timerMove
-let timerId
 let squares
-
 //div creation
 function divCreation(){
     for (let i = 0; i < 42; i ++){
@@ -53,7 +38,6 @@ function whackGameRendering(){
 }
 //random mole and square
 function randomSquare(){
-    console.log(squares)
     squares.forEach(element => {
          element.classList.remove('moleA')
          element.classList.remove('moleB')
@@ -106,7 +90,7 @@ function countDown(){
         alert('Game is Over')
     }
 }
-//punch
+//punch animation
 function punch(){
     this.classList.add('punch')
     setTimeout(() => this.classList.remove('punch'), 250)
@@ -142,7 +126,7 @@ function startWhack(){
 
 }
 //reset
-function reset(){
+function resetWhack(){
     console.log('reset button pressed')
     clearInterval(timerId)
     clearInterval(timerMove)
@@ -156,9 +140,9 @@ function reset(){
     startBttn.textContent = 'Pause'
 }
 //exit game
-function exit(){
+function exitWhack(){
     console.log('exit pressed')
-     reset()
+     resetWhack()
      gameOver = true
      clearInterval(timerId)
      clearInterval(timerMove)
@@ -173,20 +157,10 @@ function exit(){
 //start button action
 startBttn.addEventListener('click', startWhack)
 //reset button action
-resetBttn.addEventListener('click', reset)
+resetBttn.addEventListener('click', resetWhack)
 //exit button action
-exitBttn.addEventListener('click', exit)
-//instruction button action
-instBtn.addEventListener('click', () =>{
-    console.log('instruction button pressed')
-    if (instBtn.innerHTML === 'Instructions'){
-     instBtn.innerHTML = 'Hide'
-     instruction.style.display = 'block'
-    } else if (instBtn.innerHTML === 'Hide'){
-     instBtn.innerHTML = 'Instructions'
-     instruction.style.display = 'none'  
-    }
- })
+exitBttn.addEventListener('click', exitWhack)
+
 
 
 

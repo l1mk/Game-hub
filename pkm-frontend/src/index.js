@@ -1,7 +1,5 @@
-
-
 console.log("booting...")
-//variable declaration
+//variable declaration for menu
 const player_form = document.getElementById('create-player-form')
 const logged_page_container = document.getElementById('logged-page')
 const scores_table = document.getElementById('score-table')
@@ -11,11 +9,25 @@ const ul = document.getElementById('score-ul')
 const logout_link = document.getElementById('logout')
 const game_hud = document.getElementById('game-hud')
 const game_selection = document.getElementById('game-selection-layout')
-let scores = []
+let game_title = document.getElementById('game-title')
 let currentPlayer
 let currentPlayerName
 let currentGame
-
+//variable declaration for in games variable
+const moleA = document.querySelectorAll('.moleA')
+const moleB = document.querySelectorAll('.moleB')
+const timeLeft = document.querySelector('#time-left')
+const startBttn = document.querySelector('#start-pause')
+const resetBttn = document.querySelector('#reset')
+const exitBttn = document.getElementById('exit-bttn')
+const instBtn = document.querySelector('#inst-Btn')
+const instruction = document.querySelector('#instructions')
+let grid = document.getElementsByClassName('grid')[0]
+let border = document.getElementsByClassName('border')[0]
+let topScore = 0
+let gameOver = false
+let currentTime = timeLeft.textContent
+let timerId
 //temporary test
 const enter = document.getElementById('enter')
 const a = document.getElementById('a')
@@ -24,12 +36,14 @@ enter.addEventListener('click', function(x){
     fetchNewRecord(a.value, currentPlayer.id, currentGame.id)
 })
 
-//temporary test 2
+//Game Selection
 const whackImage = document.getElementById('whack-image')
 whackImage.addEventListener('click', function(x){
     console.log('clicked', x)
-    fetchNewGame(whackImage.name)
+    let title = "Whack a Mole"
+    fetchNewGame(title)
     game_hud.classList.remove('hidden')
+    game_title.innerHTML = title
     whackGameRendering()
     hideMenu()
 })
@@ -52,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentPlayer = undefined
         let currentPlayerName = undefined
         score_title.innerHTML = 'All Top Scores'
-        exit()
+        exitWhack()
         hideGame()
         hideMenu()
         logged_page_container.classList.add('hidden')
@@ -80,6 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     new CurrentTime('current-time')
 })
+//instruction button action
+instBtn.addEventListener('click', () =>{
+    console.log('instruction button pressed')
+    if (instBtn.innerHTML === 'Instructions'){
+     instBtn.innerHTML = 'Hide'
+     instruction.style.display = 'block'
+    } else if (instBtn.innerHTML === 'Hide'){
+     instBtn.innerHTML = 'Instructions'
+     instruction.style.display = 'none'  
+    }
+ })
 //function declaration: capitalize names
 function capitalize(name){
 return name.charAt(0).toUpperCase() + name.slice(1)

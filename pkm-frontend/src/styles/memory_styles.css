@@ -4,12 +4,20 @@
     width: 60px;
 }
 
-.grid #memory-grid {
+#memory-grid {
+    display: flex;
+    flex-flow: row wrap;
+    margin: auto;
     height: 360px;
     width: 360px;
 }
 
-.border #memory-border {
+#memory-border {
+    display: flex;
+    flex-wrap: wrap;
+    height: 450px;
+    width: 450px;
+    margin: auto;
     background-image: url('images/memory/border.jpeg');
     background-size: cover;
 }
