@@ -9,6 +9,8 @@ const ul = document.getElementById('score-ul')
 const logout_link = document.getElementById('logout')
 const game_hud = document.getElementById('game-hud')
 const game_selection = document.getElementById('game-selection-layout')
+const whackIcon = document.getElementById('whack-image')
+const memoryIcon = document.getElementById('memory-image')
 let game_title = document.getElementById('game-title')
 let currentPlayer
 let currentPlayerName
@@ -37,14 +39,24 @@ enter.addEventListener('click', function(x){
 })
 
 //Game Selection
-const whackImage = document.getElementById('whack-image')
-whackImage.addEventListener('click', function(x){
+
+whackIcon.addEventListener('click', function(x){
     console.log('clicked', x)
     let title = "Whack a Mole"
     fetchNewGame(title)
     game_hud.classList.remove('hidden')
     game_title.innerHTML = title
     whackGameRendering()
+    hideMenu()
+})
+
+memoryIcon.addEventListener('click', function(x){
+    console.log('clicked', x)
+    let title = "Memory"
+    fetchNewGame(title)
+    game_hud.classList.remove('hidden')
+    game_title.innerHTML = title
+    //memoryGameRendering()
     hideMenu()
 })
 
