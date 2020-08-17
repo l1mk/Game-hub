@@ -45,7 +45,7 @@ function divCreation(){
     })
 }
 //game rendering
-function gameRendering(){
+function whackGameRendering(){
     divCreation()
     border.id = 'whack-border'
     grid.id = 'whack-grid'
@@ -119,7 +119,7 @@ function destroyHoles(){
       }
 }
 //start-pause
-function start(){
+function startWhack(){
     console.log('clicked start/pause button')
     if (startBttn.textContent === 'Pause'){
         console.log('Pause')
@@ -171,7 +171,7 @@ function exit(){
      currentGame = undefined
 }
 //start button action
-startBttn.addEventListener('click', start)
+startBttn.addEventListener('click', startWhack)
 //reset button action
 resetBttn.addEventListener('click', reset)
 //exit button action

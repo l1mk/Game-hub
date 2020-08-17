@@ -1,3 +1,5 @@
+
+
 console.log("booting...")
 //variable declaration
 const player_form = document.getElementById('create-player-form')
@@ -8,7 +10,7 @@ const score_title = document.getElementById('score-title')
 const ul = document.getElementById('score-ul')
 const logout_link = document.getElementById('logout')
 const game_hud = document.getElementById('game-hud')
-const game_selection = document.getElementById('game-selection')
+const game_selection = document.getElementById('game-selection-layout')
 let scores = []
 let currentPlayer
 let currentPlayerName
@@ -23,12 +25,12 @@ enter.addEventListener('click', function(x){
 })
 
 //temporary test 2
-const startGame = document.getElementById('start-game')
-startGame.addEventListener('click', function(x){
+const whackImage = document.getElementById('whack-image')
+whackImage.addEventListener('click', function(x){
     console.log('clicked', x)
-    fetchNewGame(startGame.textContent)
+    fetchNewGame(whackImage.name)
     game_hud.classList.remove('hidden')
-    gameRendering()
+    whackGameRendering()
     hideMenu()
 })
 

@@ -10,6 +10,33 @@
     float: left;
 }
 
+.game-selection-icons{
+    background-color: #4C4C4C;
+    display: inline-flex;
+    width: 400px;
+    height: 200px;
+    align-content: center;
+
+}
+
+#whack-image{
+    margin-top: 25px;
+    margin-left: 30px;
+    width: 150px;
+    height: 150px;
+    background-image: url('images/whack/Icon.png');
+    background-size: cover;
+}
+
+#memory-image{
+    margin-top: 25px;
+    margin-left: 30px;
+    width: 150px;
+    height: 150px;
+    background-image: url('images/memory/Icon.png');
+    background-size: cover;
+}
+
 #score-title {
     margin-top: 10px;
     float: right;
