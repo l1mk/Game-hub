@@ -32,6 +32,13 @@ function divCreation(){
 //game rendering
 function whackGameRendering(){
     divCreation()
+    //start button action
+    startBttn.addEventListener('click', startWhack)
+    //reset button action
+    resetBttn.addEventListener('click', resetWhack)
+    //exit button action
+    exitBttn.addEventListener('click', exitWhack)
+    //class style addition
     border.id = 'whack-border'
     grid.id = 'whack-grid'
     console.log('game rendering', border, grid)
@@ -154,12 +161,7 @@ function exitWhack(){
      hideGame()
      currentGame = undefined
 }
-//start button action
-startBttn.addEventListener('click', startWhack)
-//reset button action
-resetBttn.addEventListener('click', resetWhack)
-//exit button action
-exitBttn.addEventListener('click', exitWhack)
+
 
 
 

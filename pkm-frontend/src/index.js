@@ -27,9 +27,9 @@ const instruction = document.querySelector('#instructions')
 let grid = document.getElementsByClassName('grid')[0]
 let border = document.getElementsByClassName('border')[0]
 let topScore = 0
-let gameOver = false
 let currentTime = timeLeft.textContent
 let timerId
+let gameOver = false
 //temporary test
 const enter = document.getElementById('enter')
 const a = document.getElementById('a')
@@ -39,7 +39,6 @@ enter.addEventListener('click', function(x){
 })
 
 //Game Selection
-
 whackIcon.addEventListener('click', function(x){
     console.log('clicked', x)
     let title = "Whack a Mole"
@@ -49,14 +48,13 @@ whackIcon.addEventListener('click', function(x){
     whackGameRendering()
     hideMenu()
 })
-
 memoryIcon.addEventListener('click', function(x){
     console.log('clicked', x)
     let title = "Memory"
     fetchNewGame(title)
     game_hud.classList.remove('hidden')
     game_title.innerHTML = title
-    //memoryGameRendering()
+    memoryGameRendering()
     hideMenu()
 })
 
