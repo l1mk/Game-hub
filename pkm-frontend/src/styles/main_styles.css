@@ -10,13 +10,31 @@
     float: left;
 }
 
+.center-data{
+    align-content: center;
+    text-align: center;
+}
+
+#welcome-title{
+    display: block;
+    background-image: url('images/Title.png');
+    height: 100px;
+    width: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+}
+
 .game-selection-icons{
+    margin-left: 20%;
     background-color: #4C4C4C;
+    background-position: center;
     display: inline-flex;
     width: 400px;
     height: 200px;
     align-content: center;
-
+    text-align: center;
 }
 
 #whack-image{
@@ -49,6 +67,12 @@
     border-color: white;
     border-width: 1px;
     border-radius: 10px;
+}
+
+.player-title{
+    font-size: x-small;
+    color: grey;
+    float: right;
 }
 
 #score-title {

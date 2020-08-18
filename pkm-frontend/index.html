@@ -10,7 +10,8 @@
   </head>
   <body>
     <div class="right-data" id="current-time"></div>
-    <h1 id="welcome">Welcome to PokeFest</h1>
+    <span id="welcome-title"></span>
+    <div class="center-data">
       <form id="create-player-form">
         <h4>Enter Your Name</h4>
         <input
@@ -28,9 +29,9 @@
           class="submit"
         />
       </form>
-
+    </div>
     <container class="hidden" id="logged-page">  
-      <h6>Logged as: <span id="player-name"></span>. click to <a href="" id="logout">  logout  </a></h6>
+      <span class="player-title">Logged as: <span id="player-name"></span>. Click to <a href="" id="logout">  logout  </a></span>
     <br>
     <br>
     <container class ="hidden" id="game-selection-layout">
