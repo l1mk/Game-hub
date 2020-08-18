@@ -193,7 +193,9 @@ function checkForMatch(){
     } else {
         cards[optionOneId].setAttribute('src', 'src/styles/images/memory/pkm-pokeball.png')
         cards[optionTwoId].setAttribute('src', 'src/styles/images/memory/pkm-pokeball.png')
-        alert('Sorry, try again')
+        border.classList.add('flash')
+        setTimeout(() => border.classList.remove('flash'), 250)
+        console.log('missmatch cards')
     }
     cardsChoosen = [];
     cardsChoosenId = [];
