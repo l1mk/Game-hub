@@ -30,14 +30,6 @@ let topScore = 0
 let currentTime = timeLeft.textContent
 let timerId
 let gameOver = false
-//temporary test
-const enter = document.getElementById('enter')
-const a = document.getElementById('a')
-enter.addEventListener('click', function(x){
-    console.log('enter', a.value)
-    fetchNewRecord(a.value, currentPlayer.id, currentGame.id)
-})
-
 //Game Selection
 whackIcon.addEventListener('click', function(x){
     console.log('clicked', x)
