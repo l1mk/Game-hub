@@ -178,6 +178,8 @@ function memoryGameRendering(){
     border.id = 'memory-border'
     grid.id = 'memory-grid'
     gameOver = true
+    topMemoryScore.innerHTML = 0
+    console.log('game rendering')
 }
 //find match
 function checkForMatch(){
@@ -211,12 +213,14 @@ function checkForMatch(){
 }
 //flipcard 
 function flipcard(){
-    var cardId = this.getAttribute('data-id');
-    cardsChoosen.push(cardArray[cardId].name);
-    cardsChoosenId.push(cardId); 
-    this.setAttribute('src', cardArray[cardId].img)
-    if (cardsChoosen.length === 2){
-        setTimeout(checkForMatch, 500)
+    if (startBttn.textContent === 'Pause'){
+        var cardId = this.getAttribute('data-id');
+        cardsChoosen.push(cardArray[cardId].name);
+        cardsChoosenId.push(cardId); 
+        this.setAttribute('src', cardArray[cardId].img)
+        if (cardsChoosen.length === 2){
+            setTimeout(checkForMatch, 500)
+        }
     }
 }
 //timer
@@ -234,6 +238,12 @@ function timer(){
         fetchNewRecord(cardsWon.length, currentPlayer.id, currentGame.id)
         alert ("Times up, Try Again")
     }
+}
+//destroy cards
+function destroyCards(){
+    while ( grid.firstChild) {
+        grid.removeChild(grid.firstChild)
+    }  
 }
 //start-pause
 function startMemory(){
@@ -277,7 +287,10 @@ function exitMemory(){
      clearInterval(timerId)
      currentTime = 30
      startBttn.textContent = 'Start'
-     destroyHoles()
+     destroyCards()
      hideGame()
      currentGame = undefined
+    startBttn.removeEventListener('click', startMemory)
+    resetBttn.removeEventListener('click', resetMemory)
+    exitBttn.removeEventListener('click', exitMemory)
 }

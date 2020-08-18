@@ -45,6 +45,7 @@ whackIcon.addEventListener('click', function(x){
     fetchNewGame(title)
     game_hud.classList.remove('hidden')
     game_title.innerHTML = title
+    topScore = 0
     whackGameRendering()
     hideMenu()
 })
@@ -54,6 +55,7 @@ memoryIcon.addEventListener('click', function(x){
     fetchNewGame(title)
     game_hud.classList.remove('hidden')
     game_title.innerHTML = title
+    topScore = 0
     memoryGameRendering()
     hideMenu()
 })

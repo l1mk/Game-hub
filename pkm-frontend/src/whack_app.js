@@ -39,9 +39,11 @@ function whackGameRendering(){
     //exit button action
     exitBttn.addEventListener('click', exitWhack)
     //class style addition
+    gameOver = true
     border.id = 'whack-border'
     grid.id = 'whack-grid'
-    console.log('game rendering', border, grid)
+    topWhackaScore.innerHTML = 0
+    console.log('game rendering')
 }
 //random mole and square
 function randomSquare(){
@@ -129,8 +131,8 @@ function startWhack(){
             timeLeft.textContent = currentTime
             gameOver = false
         }
+        gameOver = false
     }
-
 }
 //reset
 function resetWhack(){
@@ -160,6 +162,9 @@ function exitWhack(){
      destroyHoles()
      hideGame()
      currentGame = undefined
+     startBttn.removeEventListener('click', startWhack)
+     resetBttn.removeEventListener('click', resetWhack)
+     exitBttn.removeEventListener('click', exitWhack)
 }
 
 
