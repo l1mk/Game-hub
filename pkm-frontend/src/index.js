@@ -1,17 +1,17 @@
-console.log("booting...")
+console.log('booting...')
 //variable declaration for menu
-const player_form = document.getElementById('create-player-form')
-const logged_page_container = document.getElementById('logged-page')
-const scores_table = document.getElementById('score-table')
-const score_switch = document.getElementById('score-switch')
-const score_title = document.getElementById('score-title')
+const playerForm = document.getElementById('create-player-form')
+const loggedContainer = document.getElementById('logged-page')
+const ScoresTables = document.getElementById('score-table')
+const scoreSwitch = document.getElementById('score-switch')
+const scoreTitle = document.getElementById('score-title')
 const ul = document.getElementById('score-ul')
-const logout_link = document.getElementById('logout')
-const game_hud = document.getElementById('game-hud')
-const game_selection = document.getElementById('game-selection-layout')
+const logoutLink = document.getElementById('logout')
+const gameHud = document.getElementById('game-hud')
+const gameSelection = document.getElementById('game-selection-layout')
 const whackIcon = document.getElementById('whack-image')
 const memoryIcon = document.getElementById('memory-image')
-let game_title = document.getElementById('game-title')
+let gameTitle = document.getElementById('game-title')
 let currentPlayer
 let currentPlayerName
 let currentGame
@@ -35,8 +35,8 @@ whackIcon.addEventListener('click', function(x){
     console.log('clicked', x)
     let title = "Whack a Mole"
     fetchNewGame(title)
-    game_hud.classList.remove('hidden')
-    game_title.innerHTML = title
+    gameHud.classList.remove('hidden')
+    gameTitle.innerHTML = title
     topScore = 0
     whackGameRendering()
     hideMenu()
@@ -45,8 +45,8 @@ memoryIcon.addEventListener('click', function(x){
     console.log('clicked', x)
     let title = "Memory"
     fetchNewGame(title)
-    game_hud.classList.remove('hidden')
-    game_title.innerHTML = title
+    gameHud.classList.remove('hidden')
+    gameTitle.innerHTML = title
     topScore = 0
     memoryGameRendering()
     hideMenu()
@@ -55,42 +55,42 @@ memoryIcon.addEventListener('click', function(x){
 //After dom load initial actions
 document.addEventListener('DOMContentLoaded', () => {
     //submit form action
-    player_form.addEventListener('submit', function(a){
+    playerForm.addEventListener('submit', function(a){
         a.preventDefault();
         console.log('submit pressed')
         menu()
-        fetchNewPlayer(a.target.name.value)
+        fetchNewPlayer(capitalize(a.target.name.value))
         fetchRecords()
         hideLogin()
       });
     //logout link
-    logout_link.addEventListener('click', (a) => {
+    logoutLink.addEventListener('click', (a) => {
         console.log('logout clicked')
         a.preventDefault()
         let currentPlayer = undefined
         let currentPlayerName = undefined
-        score_title.innerHTML = 'All Top Scores'
+        scoreTitle.innerHTML = 'All Top Scores'
         exitWhack()
         hideGame()
         hideMenu()
-        logged_page_container.classList.add('hidden')
-        player_form.classList.remove('hidden')
+        loggedContainer.classList.add('hidden')
+        playerForm.classList.remove('hidden')
         Record.destroyScores()
     })
     //togle scores switch
-    score_switch.addEventListener('click', () => {
-        console.log('toglee pressed', score_switch.value)
+    scoreSwitch.addEventListener('click', () => {
+        console.log('toglee pressed', scoreSwitch.value)
 
         let li = document.getElementsByTagName('li');
-        if (score_title.textContent === 'All Top Scores') {
-        score_title.innerHTML = `Player ${currentPlayerName} Bests`
+        if (scoreTitle.textContent === 'All Top Scores') {
+        scoreTitle.innerHTML = `Player ${currentPlayerName} Bests`
             for (let i =0; i<li.length; i++){
                 if (!li[i].textContent.includes(`${currentPlayer.name}`)){
                     li[i].classList.add('hidden');
                 }
             }
-        } else if (score_title.textContent === `Player ${currentPlayerName} Bests`) {
-        score_title.innerHTML = 'All Top Scores'
+        } else if (scoreTitle.textContent === `Player ${currentPlayerName} Bests`) {
+        scoreTitle.innerHTML = 'All Top Scores'
             for (let i =0; i<li.length; i++){
                 li[i].classList.remove('hidden');
             }
@@ -116,26 +116,26 @@ return name.charAt(0).toUpperCase() + name.slice(1)
 //function declaration: show menu  
 function menu(){
     console.log('show menu')
-    game_selection.classList.remove('hidden')
+    gameSelection.classList.remove('hidden')
 }
 
 //function declaration: hide login
 function hideLogin(){
     console.log('hide form')
-    player_form.classList.add('hidden')
-    logged_page_container.classList.remove('hidden')
+    playerForm.classList.add('hidden')
+    loggedContainer.classList.remove('hidden')
 
 }
 //function declaration: hide menu
 function hideMenu(){
     console.log('hide menu')
-game_selection.classList.add('hidden')
+gameSelection.classList.add('hidden')
 }
 
 //function declaratio: hide game
 function hideGame(){
     console.log('hide game')
-    game_hud.classList.add('hidden')
+    gameHud.classList.add('hidden')
     menu()
 }
 

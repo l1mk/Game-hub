@@ -5,14 +5,14 @@ class Player {
     this.records = argument.records
     this.created = argument.created_at
     this.id = argument.id
-    this.render(this.name)
+    this.render()
     }
     //player rendering
-    render(name){
-        console.log('rendering', name)
-        const player_name = document.getElementById('player-name');
-        console.log(player_name)
-        player_name.innerHTML = capitalize(name)
+    render(){
+        console.log('rendering', this.name)
+        const playerName = document.getElementById('player-name');
+        console.log(playerName)
+        playerName.innerHTML = capitalize(this.name)
     }
     //function declaration: player score update
     updatePlayer(record, id){

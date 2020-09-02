@@ -7,16 +7,16 @@ class Record {
     this.created = argument.created_at
     this.id = argument.id
     console.log(argument.player, 'is', this.player, argument.player_id)
-    this.render(this.score)
+    this.render()
     }
     //score rendering
-    render(score){
-        console.log('rendering', score)
+    render(){
+        console.log('rendering', this.score)
         let li = document.createElement('li')
         if (this.player && this.game) {
-            li.innerHTML = `${score} by ${this.player.name} in ${this.game.title}`
+            li.innerHTML = `${this.score} by ${this.player.name} in ${this.game.title}`
         } else {
-            li.innerHTML = `${score} by ${currentPlayer.name} in ${currentGame.title}`
+            li.innerHTML = `${this.score} by ${currentPlayer.name} in ${currentGame.title}`
         }
         ul.appendChild(li)
     }
