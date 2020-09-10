@@ -15,29 +15,29 @@ class Player {
         playerName.innerHTML = capitalize(this.name)
     }
     //function declaration: player score update
-    updatePlayer(record, id){
-        console.log('updating')
-        let configObj = {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-            },
-            body: JSON.stringify({
-                "record": record
-              })
-          };
-          return fetch(`http://localhost:3000/players/${id}`, configObj)
-          .then(function(response) {
-            return response.json();
-          })
-          .then(function(object) {
-            console.log(object);
-          })
-          .catch(function(error) {
-            alert("Error");
-            document.body.innerHTML = error.message;
-          });
-    }
+  //  updatePlayer(record, id){
+  //      console.log('updating')
+  //      let configObj = {
+  //          method: "PATCH",
+  //          headers: {
+  //            "Content-Type": "application/json",
+  //            "Accept": "application/json"
+  //          },
+  //          body: JSON.stringify({
+  //              "record": record
+  //            })
+  //        };
+  //        return fetch(`http://localhost:3000/players/${id}`, configObj)
+  //        .then(function(response) {
+  //          return response.json();
+  //        })
+  //        .then(function(object) {
+  //          console.log(object);
+  //        })
+  //        .catch(function(error) {
+  //          alert("Error");
+  //          document.body.innerHTML = error.message;
+  //        });
+  //  }
 
 }
