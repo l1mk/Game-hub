@@ -30,35 +30,13 @@ let topScore = 0
 let currentTime = timeLeft.textContent
 let timerId
 let gameOver = false
-//Game Selection
-whackIcon.addEventListener('click', function(x){
-    console.log('clicked', x)
-    let title = "Whack a Mole"
-    fetchNewGame(title)
-    gameHud.classList.remove('hidden')
-    gameTitle.innerHTML = title
-    topScore = 0
-    whackGameRendering()
-    hideMenu()
-})
-memoryIcon.addEventListener('click', function(x){
-    console.log('clicked', x)
-    let title = "Memory"
-    fetchNewGame(title)
-    gameHud.classList.remove('hidden')
-    gameTitle.innerHTML = title
-    topScore = 0
-    memoryGameRendering()
-    hideMenu()
-})
-
 //After dom load initial actions
 document.addEventListener('DOMContentLoaded', () => {
     //submit form action
     playerForm.addEventListener('submit', function(a){
         a.preventDefault();
         console.log('submit pressed')
-        menu()
+        showMenu()
         fetchNewPlayer(capitalize(a.target.name.value))
         fetchRecords()
         hideLogin()
@@ -77,17 +55,36 @@ document.addEventListener('DOMContentLoaded', () => {
         playerForm.classList.remove('hidden')
         Record.destroyScores()
     })
+    //Game Selection
+    whackIcon.addEventListener('click', function(x){
+        console.log('clicked', x)
+        let title = "Whack a Mole"
+        fetchNewGame(title)
+        gameHud.classList.remove('hidden')
+        gameTitle.innerHTML = title
+        topScore = 0
+        whackGameRendering()
+        hideMenu()
+    })
+    memoryIcon.addEventListener('click', function(x){
+        console.log('clicked', x)
+        let title = "Memory"
+        fetchNewGame(title)
+        gameHud.classList.remove('hidden')
+        gameTitle.innerHTML = title
+        topScore = 0
+        memoryGameRendering()
+        hideMenu()
+    })
     //togle scores switch
     scoreSwitch.addEventListener('click', () => {
         console.log('toglee pressed', scoreSwitch.value)
-
         let li = document.getElementsByTagName('li');
         if (scoreTitle.textContent === 'All Top Scores') {
         scoreTitle.innerHTML = `Player ${currentPlayerName} Bests`
             for (let i =0; i<li.length; i++){
                 if (!li[i].textContent.includes(`${currentPlayer.name}`)){
-                    li[i].classList.add('hidden');
-                }
+                    li[i].classList.add('hidden');}
             }
         } else if (scoreTitle.textContent === `Player ${currentPlayerName} Bests`) {
         scoreTitle.innerHTML = 'All Top Scores'
@@ -96,49 +93,45 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     })
+    //instruction button action
+    instBtn.addEventListener('click', () =>{
+        console.log('instruction button pressed')
+        if (instBtn.innerHTML === 'Instructions'){
+            instBtn.innerHTML = 'Hide'
+            instruction.style.display = 'block'
+        } else if (instBtn.innerHTML === 'Hide'){
+            instBtn.innerHTML = 'Instructions'
+            instruction.style.display = 'none'  
+        }
+    })
     new CurrentTime('current-time')
 })
-//instruction button action
-instBtn.addEventListener('click', () =>{
-    console.log('instruction button pressed')
-    if (instBtn.innerHTML === 'Instructions'){
-     instBtn.innerHTML = 'Hide'
-     instruction.style.display = 'block'
-    } else if (instBtn.innerHTML === 'Hide'){
-     instBtn.innerHTML = 'Instructions'
-     instruction.style.display = 'none'  
-    }
- })
 //function declaration: capitalize names
 function capitalize(name){
 return name.charAt(0).toUpperCase() + name.slice(1)
 }
 //function declaration: show menu  
-function menu(){
+function showMenu(){
     console.log('show menu')
     gameSelection.classList.remove('hidden')
 }
-
 //function declaration: hide login
 function hideLogin(){
     console.log('hide form')
     playerForm.classList.add('hidden')
     loggedContainer.classList.remove('hidden')
-
 }
 //function declaration: hide menu
 function hideMenu(){
     console.log('hide menu')
 gameSelection.classList.add('hidden')
 }
-
 //function declaratio: hide game
 function hideGame(){
     console.log('hide game')
     gameHud.classList.add('hidden')
-    menu()
+    showMenu()
 }
-
 //function declaration: read records database
 function fetchRecords(){
     console.log('start all records fetch')
@@ -169,7 +162,6 @@ function fetchNewPlayer(name){
       },
       body: JSON.stringify(formData)
     };
-
     return fetch('http://localhost:3000/players', configObj)
     .then(function(response) {
         console.log('fetching', response);
@@ -185,7 +177,6 @@ function fetchNewPlayer(name){
         alert('Error');
     });
 }
-
 //function declaration: new record
 function fetchNewRecord(score, player_id, game_id){
     console.log('start record fetch')
@@ -203,7 +194,6 @@ function fetchNewRecord(score, player_id, game_id){
       },
       body: JSON.stringify(formData)
     };
-
     return fetch('http://localhost:3000/records', configObj)
     .then(function(response) {
         console.log('fetching', response);
@@ -218,7 +208,6 @@ function fetchNewRecord(score, player_id, game_id){
         alert('Error');
     });
 }
-
 //function declaration: new game
 function fetchNewGame(title){
     console.log('start game fetch')
@@ -234,7 +223,6 @@ function fetchNewGame(title){
       },
       body: JSON.stringify(formData)
     };
-
     return fetch('http://localhost:3000/games', configObj)
     .then(function(response) {
         console.log('fetching', response);
