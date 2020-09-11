@@ -175,8 +175,6 @@ function fetchRecords(){
             console.log('record', filteredRecord[i], i)
             let newRecord = new Record (filteredRecord[i])
         }
-
-        
     })
 }
 //function declaration: player creation
