@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('toglee pressed', scoreSwitch.value)
         let li = document.getElementsByTagName('li');
         if (scoreTitle.textContent === 'All Top Scores') {
+            console.log(li)
         scoreTitle.innerHTML = `Player ${currentPlayerName} Bests`
             for (let i =0; i<li.length; i++){
                 if (!li[i].textContent.includes(`${currentPlayer.name}`)){
@@ -142,10 +143,40 @@ function fetchRecords(){
     })
     .then(function(records){
         console.log('then', records)
-        records.forEach( (record) => {
-            console.log('record', record)
-            let newRecord = new Record (record)
+        //sorted the records result by highest record value
+        let sortedRecords = records.sort(function (a,b){
+            return b.score - a.score;
         })
+        console.log('sorted', sortedRecords)
+        //find all players 
+        let playersId = [];
+        sortedRecords.forEach((record) => {
+            if (playersId.length === 0){
+                playersId.push(record.player.id)
+                console.log("pushing first id")
+            } else {
+                if (!playersId.includes(record.player.id)){
+                    playersId.push(record.player.id)
+                    console.log("pushing unique")
+                }
+              console.log("already pushed")
+            }
+        })
+        console.log('players', playersId)
+        //filter record by unique players
+        let filteredRecord = [];
+        playersId.forEach((id) => { 
+            let uniqueRecord = sortedRecords.find(element => element.player_id === id) 
+            filteredRecord.push(uniqueRecord)
+        }) 
+        console.log('filter', filteredRecord)
+        //passing the filtered record to create each record class
+        for (let i = 0; i < filteredRecord.length; i++){
+            console.log('record', filteredRecord[i], i)
+            let newRecord = new Record (filteredRecord[i])
+        }
+
+        
     })
 }
 //function declaration: player creation
