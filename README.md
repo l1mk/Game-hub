@@ -1,4 +1,4 @@
-# pokemon-project
+# Game-hub
 
 SPA using javascript HTML CSS for frontend and Rails API for backend.
 
