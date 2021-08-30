@@ -1,4 +1,4 @@
-# pokemon-project
+# Game-hub
 
 SPA using javascript HTML CSS for frontend and Rails API for backend.
 
@@ -7,10 +7,10 @@ Setup:
 - Go inside the folder you just cloned using $cd pokemon-project
 - While on it, go inside the next subfolder using $cd pkm-backend to navigat to the rails API and start the migration with
 $rake db:migrate.
-- Feed the database with some basic examples using $rake db:seed. If you want you can test the API using the rails console command, $rails c. While on it, try creating new models for each like Game.create(title: "your title")
-- After testing the models you can fire up the Server using $rails S
+- If you want you can test the API using the rails console command, $rails c. While on it, try creating new models for each like Game.create(title: "your title")
+- After testing the models you can fire up the Server using $rails server
 - You can visit http://localhost:3000/games on your browser to confirm the server is live.
-- Go back to previous folder using $cd - and from there open the HTML file, index.html
+- Go back to previous folder using $cd - and from there go to /pkm-frontend in your editor and open the HTML file (for VScode you can right click and "Open with live server").
 
 Usage: 
 The app consist on a game hub, where after login in using a name or nickname, you are able to choose from different games, and see all scores for all games made by every player, you can filter to see only your scores too.
