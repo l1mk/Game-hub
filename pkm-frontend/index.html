@@ -9,26 +9,29 @@
     <title>Pokemon Project</title>
   </head>
   <body>
-    <div class="right-data" id="current-time"></div>
-    <span id="welcome-title"></span>
-    <div class="center-data">
-      <form id="create-player-form">
-        <h4>Enter Your Name</h4>
-        <input
-          type="text"
-          name="name"
-          value=""
-          placeholder="Enter your name..."
-          class="input-text"
-        />
-        <br />
-        <input
-          type="submit"
-          name="submit"
-          value="SUBMIT"
-          class="submit"
-        />
-      </form>
+    <div class="home-container">
+      <div class="right-data" id="current-time"></div>
+      <span id="welcome-title" ></span>
+        <div class="form-container">
+          <form id="create-player-form" class="center-data" >
+            <h4 id="enter-name">Enter Your Name:</h4>
+            <br>
+            <input
+              type="text"
+              name="name"
+              value=""
+              placeholder="Enter your name..."
+              class="input-text"
+            />
+            <br>
+            <input
+              type="submit"
+              name="submit"
+              value="SUBMIT"
+              class="submit"
+            />
+          </form>
+        </div>
     </div>
     <container class="hidden" id="logged-page">  
       <span class="player-title">Logged as: <span id="player-name"></span>. Click to <a href="" id="logout">  logout  </a></span>
