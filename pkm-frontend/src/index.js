@@ -12,6 +12,7 @@ const gameSelection = document.getElementById('game-selection-layout')
 const whackIcon = document.getElementById('whack-image')
 const memoryIcon = document.getElementById('memory-image')
 let gameTitle = document.getElementById('game-title')
+let currentPlayerNameText = document.getElementById('player-name')
 let currentPlayer
 let currentPlayerName
 let currentGame
@@ -200,6 +201,8 @@ function fetchNewPlayer(name){
         console.log('then', object);
         currentPlayer = new Player (object)
         currentPlayerName = capitalize(currentPlayer.name)
+        console.log("log as ", currentPlayerName)
+        currentPlayerNameText.innerText = currentPlayerNameText
     })
     .catch(function(error) {
         console.log('failed player', error);

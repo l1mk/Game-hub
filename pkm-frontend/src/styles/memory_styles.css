@@ -24,6 +24,7 @@
     height: 450px;
     width: 450px;
     margin: auto;
-    background-image: url('images/memory/border.jpeg');
+    background-color: black;
+    /* background-image: url('images/memory/border.jpeg'); */
     background-size: cover;
 }
