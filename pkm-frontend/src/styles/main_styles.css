@@ -62,11 +62,11 @@ p {
 }
 
 .player-title {
+    position: absolute;
     background-color: black;
     padding: 1%;
     font-size: medium;
     color: white;
-    position: sticky;
     top: 0%;
     left: 40%;
 }
@@ -75,11 +75,12 @@ p {
     margin-left: 20%;
     background-color: #4C4C4C;
     background-position: center;
-    display: inline-flex;
-    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
     height: 200px;
-    align-content: center;
-    text-align: center;
+    margin: auto;
 }
 
 .home-container {
@@ -87,8 +88,8 @@ p {
     display: block;
     width: 50%;
     margin: auto;
-    margin-top: 10%;
-    padding: 5%;
+    margin-top: 2%;
+    padding: 2%;
     background-color: white ;
 }
 
@@ -103,7 +104,7 @@ p {
     background-image: url('images/Title.png');
     height: 100px;
     width: auto;
-    margin-top: 10%;
+    margin-top: 5%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -111,10 +112,12 @@ p {
 }
 
 #whack-image {
-    margin-top: 25px;
-    margin-left: 30px;
+    /* margin-top: 25px;
+    margin-left: 30px; */
+    margin: 3%;
     width: 150px;
     height: 150px;
+    border-radius: 10px;
     background-image: url('images/whack/Icon.png');
     background-size: cover;
 }
@@ -122,15 +125,16 @@ p {
 #whack-image:hover {
     border-style: solid;
     border-color: white;
-    border-width: 1px;
-    border-radius: 10px;
+    border-width: 2px;
 }
 
 #memory-image {
-    margin-top: 25px;
-    margin-left: 30px;
+    /* margin-top: 25px;
+    margin-left: 30px; */
+    margin: 3%;
     width: 150px;
     height: 150px;
+    border-radius: 10px;
     background-image: url('images/memory/Icon.png');
     background-size: cover;
 }
@@ -138,8 +142,40 @@ p {
 #memory-image:hover {
     border-style: solid;
     border-color: white;
-    border-width: 1px;
+    border-width: 2px;
+}
+
+#space-image {
+    /* margin-top: 25px;
+    margin-left: 30px; */
+    margin: 3%;
+    width: 150px;
+    height: 150px;
     border-radius: 10px;
+    background-image: url('images/space/space_icon.png');
+    background-size: cover;
+}
+
+#space-image:hover {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+}
+
+#frogger-image {
+    /* margin-top: 25px;
+    margin-left: 30px; */
+    margin: 3%;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    background-image: url('images/frogger/frogger_icon.png');
+    background-size: cover;
+}
+#frogger-image:hover {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
 }
 
 #score-title {
@@ -166,7 +202,6 @@ p {
     width: 50%;
     margin: auto;
     padding: 5%;
-    border: red 1px solid;
 }
 
 #enter-name {
