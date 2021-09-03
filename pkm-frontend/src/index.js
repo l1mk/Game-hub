@@ -8,6 +8,7 @@ const scoreTitle = document.getElementById('score-title')
 const ul = document.getElementById('score-ul')
 const logoutLink = document.getElementById('logout')
 const gameHud = document.getElementById('game-hud')
+const gameContainer = document.getElementById('game-container')
 const gameSelection = document.getElementById('game-selection-layout')
 const whackIcon = document.getElementById('whack-image')
 const memoryIcon = document.getElementById('memory-image')
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let title = "Whack a Mole"
         fetchNewGame(title)
         gameHud.classList.remove('hidden')
+        gameContainer.classList.remove('hidden')
         gameTitle.innerHTML = title
         topScore = 0
         whackGameRendering()
@@ -72,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let title = "Memory"
         fetchNewGame(title)
         gameHud.classList.remove('hidden')
+        gameContainer.classList.remove('hidden')
         gameTitle.innerHTML = title
         topScore = 0
         memoryGameRendering()
@@ -132,6 +135,7 @@ gameSelection.classList.add('hidden')
 function hideGame(){
     console.log('hide game')
     gameHud.classList.add('hidden')
+    gameContainer.classList.add('hidden')
     showMenu()
 }
 //function declaration: read records database

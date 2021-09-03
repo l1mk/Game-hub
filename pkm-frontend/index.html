@@ -33,58 +33,58 @@
           </form>
         </div>
     </div>
-    <container class="hidden" id="logged-page">  
+    <container class="hidden" id="logged-page">
+    
       <span class="player-title">Logged as: <span id="player-name"></span>.<button id="logout">LOG OUT</button></span>
-    <br>
-    <br>
-    <container class ="hidden" id="game-selection-layout">
-    <div class="game-selection-icons">
-    <span id="whack-image"></span>
-    <span id="memory-image"></span>
-    <span id="space-image"></span>
-    <span id="frogger-image"></span>
-    </div>  
-    </container>
-
-    <div class="right-data"> 
-    <label class="switch" >
-      <input type="checkbox" id="score-switch">
-      <span class="slider"></span>
-    </label>
-    <br><br>
-      <span id="score-title">All Top Scores</span>
-      <br><br>
-      <div class="table" id="score-table">
-          <ul id="score-ul"></ul>
-      </div>
-    </div>
-
-      <container class="hidden" id="game-hud">
-        <div class="header">
-          <h4 id="game-title"></h4>
-        </div>
-        <div class="left-data">
-          <h5>Top Score: </h5><span class="small" id="top">None</span>
-          <h5>Score: </h5><span class="small" id="score-value">0</span>
-          <h5>Timer: </h5><span class="small" id="time-left">30</span>
-      </div>
-        <br>
-        <br>
-
-        <div class="border">
-            <div class="grid"></div>
-        </div>
-
-        <br>
-        <br>
-        <button class="button"  id="start-pause">Start</button>
-        <button class="button" id="reset">Reset</button>
-        <button class="button" id="exit-bttn">Exit</button>
-        <button class="button"  id="inst-Btn">Instructions</button>
-        <div id="instructions">
-          <p>Use the mouse to click inside, lose if timer is up.</p>
-        </div>
+      <br>
+      <br>
+      <container class ="hidden" id="game-selection-layout">
+        <div class="game-selection-icons">
+          <span id="whack-image"></span>
+          <span id="memory-image"></span>
+          <span id="space-image"></span>
+          <span id="frogger-image"></span>
+        </div>  
       </container>
+      <div class="hidden" id="game-container"> 
+        <container class="hidden" id="game-hud">
+          <div class="right-data"> 
+            <label class="switch" >
+              <input type="checkbox" id="score-switch">
+              <span class="slider"></span>
+            </label>
+            <br><br>
+              <span id="score-title">All Top Scores</span>
+              <br><br>
+              <div class="table" id="score-table">
+                  <ul id="score-ul"></ul>
+              </div>
+            </div>
+          <div class="header center-data">
+            <h4 id="game-title"></h4>
+          </div>
+          <div class="left-data">
+            <h5>Top Score: </h5><span class="small" id="top">None</span>
+            <h5>Score: </h5><span class="small" id="score-value">0</span>
+            <h5>Timer: </h5><span class="small" id="time-left">30</span>
+          </div>
+          <br>
+          <br>
+
+          <div class="border">
+              <div class="grid"></div>
+          </div>
+          <br>
+          <br>
+          <button class="button"  id="start-pause">Start</button>
+          <button class="button" id="reset">Reset</button>
+          <button class="button" id="exit-bttn">Exit</button>
+          <button class="button"  id="inst-Btn">Instructions</button>
+          <div id="instructions">
+            <p>Use the mouse to click inside, lose if timer is up.</p>
+          </div>
+        </container>
+      </div> 
     </container>
 
   <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>

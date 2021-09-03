@@ -207,4 +207,13 @@ p {
 #enter-name {
     color: rgb(1, 82, 136);
 }
+#game-hud {
+    display: flex;
+    align-items: center;
+    margin-top: 1%;
+    width: 80%;
+    padding: 10%;
+    background-color: white;
+    border: red 3px solid;
+}
 
