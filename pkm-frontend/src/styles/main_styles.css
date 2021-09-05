@@ -43,7 +43,7 @@ p {
 }
 
 .right-data {
-    float: right;
+    /* float: right; */
 }
 
 .left-data {
