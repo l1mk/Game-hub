@@ -1,20 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const squares = document.querySelectorAll('.grid div')
-    const resultDisplay = document.querySelector('#result')
-    const timer = document.querySelector('#timer')
-    const top = document.querySelector('#top')
-    const startBttn = document.querySelector('#start-pause')
-    const resetBttn = document.querySelector('#reset')
-    const instBtn = document.querySelector('#inst-Btn')
-    const instruction = document.querySelector('#instructions')
-    let time = 0
+    //variables setup    
+    const spaceScore = document.querySelector('#score-value')
+    let topSpaceScore = document.querySelector('#top')
     let width = 15
     let currentShooterIndex = 202
     let currentInvaderIndex = 0
     let alienInvadersTakeDown = []
-    let result = 0
+    let timePass = 0
+    let enemiesHitted = 0
     let direction = 1
-    let topScore = 0
     let invaderId
 
     //define alien
@@ -24,11 +17,42 @@ document.addEventListener('DOMContentLoaded', () => {
         30,31,32,33,34,35,36,37,38,39
     ]
 
-    //draw aliens
-    alienInvaders.forEach (invader => squares[currentInvaderIndex + invader].classList.add('invader'))
+    //div creation
+    function spaceDivCreation(){
+        for (let i = 0; i < 224; i ++){
+            let div = document.createElement('div')
+            div.id = i +1
+            grid.appendChild(div)
+            console.log('apended',div)
+        }
+        squares = document.querySelectorAll('.grid div')
+        //draw aliens
+        alienInvaders.forEach (invader => squares[currentInvaderIndex + invader].classList.add('invader'))
+        //draw shooter
+        squares[currentShooterIndex].classList.add('shooter')
+    }
 
-    //draw shooter
-    squares[currentShooterIndex].classList.add('shooter')
+    //game rendering
+    function spaceGameRendering(){
+        spaceDivCreation()
+        //start button action
+        startBttn.textContent = 'Start'
+        startBttn.addEventListener('click', startSpace)
+        //reset button action
+        resetBttn.addEventListener('click', resetSpace)
+        //exit button action
+        exitBttn.addEventListener('click', exitSpace)
+        //class style addition
+        timePass = 0
+        timeLeft.innerHTML = timePass
+        gameOver = true
+        border.id = 'space-border'
+        grid.id = 'space-grid'
+        topSpaceScore.innerHTML = 0
+        console.log('game rendering')
+    }
+
+
 
     //move shooter
     function moveShooter(e){
@@ -48,8 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function moveInvaders() {
         const leftEdge = alienInvaders[0] % width === 0
         const righrEdge = alienInvaders[alienInvaders.length -1] % width === width -1
-        time ++
-        timer.textContent = time
 
         if ((leftEdge && direction === -1) || (righrEdge && direction === 1)){
             direction = width
@@ -70,32 +92,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     //gameover
     if (squares[currentShooterIndex].classList.contains('invader', 'shooter')){
-        resultDisplay.textContent = 'Game Over'
+        spaceScore.textContent = 'Game Over'
         squares[currentShooterIndex].classList.remove('invader')
         squares[currentShooterIndex].classList.remove('shooter')
         squares[currentShooterIndex].classList.add('dead')
         clearInterval(invaderId)
-        time = 0
-        timer.textContent = time
+
     }
     for (let i = 0; i<=alienInvaders.length-1; i++){
         if(alienInvaders[i] > (squares.length - (width-1))){
-            resultDisplay.textContent = 'Game Over'
+            spaceScore.textContent = 'Game Over'
             clearInterval(invaderId)
-            time = 0
-            timer.textContent = time
+
         }
     }
 
     if (alienInvadersTakeDown.length >= alienInvaders.length){
-        resultDisplay.textContent = 'You Win'
+        spaceScore.textContent = 'You Win'
         alert('Good Job')
         clearInterval(invaderId)
+        clearInterval(timerId)
+        startBttn.textContent = 'Start'
         document.removeEventListener('keyup', shoot)
         document.removeEventListener('keydown', moveShooter)
-        if (topScore < time){
-            topScore = time
-            top.innerHTML = `Finish in ${topScore} Seconds by Player1`
+        if (topScore < enemiesHitted + timePass){
+            topScore = enemiesHitted + timePass
+            topSpaceScore.innerHTML = `Finish in ${topScore} by ${currentPlayerName}`
+            fetchNewRecord(topScore, currentPlayer.id, currentGame.id)
         }
 
         }
@@ -121,8 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const alienTakeDown = alienInvaders.indexOf(currentLaserIndex)
                 alienInvadersTakeDown.push(alienTakeDown)
-                result ++
-                resultDisplay.textContent = result
+                enemiesHitted ++
+                spaceScore.textContent = enemiesHitted
             }
             if (currentLaserIndex < width){
                 clearInterval(laserId)
@@ -130,40 +153,54 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         switch(e.keyCode){
-            case 32:
+            case 38:
                 laserId = setInterval(moveLaser, 100)
             break
         }  
     }
-    //timer set
-    //invaderId = setInterval(moveInvaders, 500)
+
+    //timer
+    function timerUp(){
+    timePass++
+    timeLeft.textContent = timePass
+    }
+
+    //destroy all created div
+    function destroySpace(){
+    while (grid.firstChild) {
+        console.log('destroying divs')
+        grid.removeChild(grid.lastChild);
+      }
+    }
    
-//start-pause
-function start(){
+    //start-pause
+    function startSpace(){
     if (startBttn.textContent === 'Pause'){
         clearInterval(invaderId)
+        clearInterval(timerId)
         document.removeEventListener('keyup', shoot)
         document.removeEventListener('keydown', moveShooter)
         startBttn.textContent = 'Start'
     } else if (startBttn.textContent === 'Start'){
         invaderId = setInterval(moveInvaders, 250)
+        timerId = setInterval(timerUp, 1000)
         document.addEventListener('keyup', shoot)
         document.addEventListener('keydown', moveShooter)
         startBttn.textContent = 'Pause'
     }
 
-}
-//reset
-function reset(){
+    }
+    //reset
+    function resetSpace(){
         clearInterval(invaderId)
-        result = 0
-        resultDisplay.textContent = result
-        time = 0
-        timer.textContent = time
+        clearInterval(timerId)
+        enemiesHitted = 0
+        spaceScore.textContent = enemiesHitted
         currentShooterIndex = 202
         direction = 1
         currentInvaderIndex = 0
         alienInvadersTakeDown = []
+
         for (let i =0; i<alienInvaders.length -1; i++){
             squares[alienInvaders[i]].classList.remove('invader')
             console.log('remove')
@@ -180,18 +217,30 @@ function reset(){
         squares.forEach(index => index.classList.remove('dead'))
         alienInvaders.forEach (invader => squares[currentInvaderIndex + invader].classList.add('invader'))
         squares[currentShooterIndex].classList.add('shooter')
-        startBttn.textContent = 'Start'
+        document.addEventListener('keyup', shoot)
+        document.addEventListener('keydown', moveShooter)
+        invaderId = setInterval(moveInvaders, 250)
+        timerId = setInterval(timerUp, 1000)
+        timePass = 0
+        timeLeft.textContent = timePass
+        startBttn.textContent = 'Pause'
     }
 
-    startBttn.addEventListener('click', start)
-    resetBttn.addEventListener('click', reset)
-    instBtn.addEventListener('click', () =>{
-        if (instBtn.innerHTML === 'Instructions'){
-         instBtn.innerHTML = 'Hide'
-         instruction.style.display = 'block'
-        } else if (instBtn.innerHTML === 'Hide'){
-         instBtn.innerHTML = 'Instructions'
-         instruction.style.display = 'none'  
-        }
-     })
-})
+    //exit game
+    function exitSpace(){
+        console.log('exit pressed')
+        resetSpace()
+         gameOver = true
+         clearInterval(invaderId)
+         clearInterval(timerId)
+         enemiesHitted = 0
+         molesScore.textContent = enemiesHitted
+         currentTime = 30
+         startBttn.textContent = 'Start'
+         destroySpace()
+         hideGame()
+         currentGame = undefined
+         startBttn.removeEventListener('click', startSpace)
+         resetBttn.removeEventListener('click', resetSpace)
+         exitBttn.removeEventListener('click', exitSpace)
+    };

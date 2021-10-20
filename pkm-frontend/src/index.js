@@ -12,14 +12,13 @@ const gameContainer = document.getElementById('game-container')
 const gameSelection = document.getElementById('game-selection-layout')
 const whackIcon = document.getElementById('whack-image')
 const memoryIcon = document.getElementById('memory-image')
+const spaceIcon = document.getElementById('space-image')
 let gameTitle = document.getElementById('game-title')
 let currentPlayerNameText = document.getElementById('player-name')
 let currentPlayer
 let currentPlayerName
 let currentGame
 //variable declaration for in games variable
-const moleA = document.querySelectorAll('.moleA')
-const moleB = document.querySelectorAll('.moleB')
 const timeLeft = document.querySelector('#time-left')
 const startBttn = document.querySelector('#start-pause')
 const resetBttn = document.querySelector('#reset')
@@ -32,6 +31,7 @@ let topScore = 0
 let currentTime = timeLeft.textContent
 let timerId
 let gameOver = false
+let squares
 //After dom load initial actions
 document.addEventListener('DOMContentLoaded', () => {
     //submit form action
@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     logoutLink.addEventListener('click', (a) => {
         console.log('logout clicked')
         a.preventDefault()
-        let currentPlayer = undefined
-        let currentPlayerName = undefined
+        currentPlayer = undefined
+        currentPlayerName = undefined
         scoreTitle.innerHTML = 'All Top Scores'
         exitWhack()
         hideGame()
@@ -80,13 +80,24 @@ document.addEventListener('DOMContentLoaded', () => {
         memoryGameRendering()
         hideMenu()
     })
+    spaceIcon.addEventListener('click', function(x){
+        console.log('clicked', x)
+        let title = "Space Invader"
+        fetchNewGame(title)
+        gameHud.classList.remove('hidden')
+        gameContainer.classList.remove('hidden')
+        gameTitle.innerHTML = title
+        topScore = 0
+        spaceGameRendering()
+        hideMenu()
+    })
     //togle scores switch
     scoreSwitch.addEventListener('click', () => {
         console.log('toglee pressed', scoreSwitch.value)
         let li = document.getElementsByTagName('li');
         if (scoreTitle.textContent === 'All Top Scores') {
             console.log(li)
-        scoreTitle.innerHTML = `Player ${currentPlayerName} Bests`
+        scoreTitle.innerHTML = `Player "${currentPlayerName}" Bests`
             for (let i =0; i<li.length; i++){
                 if (!li[i].textContent.includes(`${currentPlayer.name}`)){
                     li[i].classList.add('hidden');}
@@ -206,7 +217,7 @@ function fetchNewPlayer(name){
         currentPlayer = new Player (object)
         currentPlayerName = capitalize(currentPlayer.name)
         console.log("log as ", currentPlayerName)
-        currentPlayerNameText.innerText = currentPlayerNameText
+        currentPlayerNameText.innerText = currentPlayerName
     })
     .catch(function(error) {
         console.log('failed player', error);

@@ -3,9 +3,11 @@ let topWhackaScore = document.getElementById('top')
 let molesScore = document.querySelector('#score-value')
 let molesHitted = 0
 let timerMove
-let squares
+// const moleA = document.querySelectorAll('.moleA')
+// const moleB = document.querySelectorAll('.moleB')
+
 //div creation
-function divCreation(){
+function moleDivCreation(){
     for (let i = 0; i < 42; i ++){
         let div = document.createElement('div')
         div.id = i +1
@@ -31,7 +33,7 @@ function divCreation(){
 }
 //game rendering
 function whackGameRendering(){
-    divCreation()
+    moleDivCreation()
     //start button action
     startBttn.addEventListener('click', startWhack)
     //reset button action

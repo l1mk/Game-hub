@@ -1,19 +1,19 @@
-
+/* 
 .header {
     padding: 10px;
     background-color: #e01f4e;
     border: solid 5px;
     color: white;
     font-size: 30px;
-}
-nav {
+} */
+/* nav {
     float: right;
     font-size: 15px;
     position: relative;
     bottom: 20px 
-}
+} */
 
-h1 {
+/* h1 {
     align-self: center;
 }
 h1, h2, h3, h4, p, div, span {
@@ -25,17 +25,19 @@ h1, h2, h3, h4, p, div, span {
 
 p {
     font-size: xx-small;
-}
-.border {
+} */
+
+/* spaceinvader unique game style */
+#space-border {
     display: flex;
     flex-wrap: wrap;
     height: 400px;
     width: 400px;
     margin: auto;
-    background-image: url('images/border.png');
+    background-image: url('images/space/spborder.png');
     background-size: cover;
 }
-.grid {
+#space-grid {
     display: flex;
     flex-wrap: wrap;
     border: solid 1px;
@@ -44,31 +46,32 @@ p {
     margin: auto;
     background-color: #f6e9d3;
 }
-.grid div {
+#space-grid div {
     width: 20px;
     height: 20px;
 }
+
 .dead {
-    background-image: url('images/sp_dead.png');
+    background-image: url('images/space/sp_dead.png');
     background-size: cover;
 }
 .neutral{
-    background-image: url('images/neutral.png');
+    background-image: url('images/space/neutral.png');
     background-size: cover;
 }
 .shooter {
-    background-image: url('images/sp_shooter.png');
+    background-image: url('images/space/sp_shooter.png');
     background-size: cover;
 }
 .invader {
-    background-image: url('images/sp_invader.png');
+    background-image: url('images/space/sp_invader.png');
     background-size: cover;
 }
 .boom {
-    background-image: url('images/sp_boom.png');
+    background-image: url('images/space/sp_boom.png');
     background-size: cover;
 }
 .laser {
-    background-image: url('images/sp_laser.png');
+    background-image: url('images/space/sp_laser.png');
     background-size: cover;
 }
