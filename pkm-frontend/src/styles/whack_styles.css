@@ -1,6 +1,4 @@
-
 /* whackamole unique game style */
-
 #whack-border {
     display: flex;
     flex-wrap: wrap;
@@ -8,13 +6,6 @@
     width: 450px;
     margin: auto;
     background-image: url('images/whack/Whackborder.png');
-    background-size: cover;
-}
-
-.square {
-    width: 45px;
-    height: 45px;
-    background-image: url('images/whack/hole.png');
     background-size: cover;
 }
 
@@ -27,7 +18,13 @@
     align-content: center;
     width: 310px;
     height: 360px;
-    
+}
+
+.hole {
+    width: 45px;
+    height: 45px;
+    background-image: url('images/whack/hole.png');
+    background-size: cover;
 }
 
 .moleA{

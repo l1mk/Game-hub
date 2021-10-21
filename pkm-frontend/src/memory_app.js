@@ -201,11 +201,11 @@ function checkForMatch(){
     cardsChoosenId = [];
     cardScore.innerHTML = cardsWon.length
     if (cardsWon.length === cardArray.length/2){
-        cardScore.innerHTML = "Congratulations, You Won"   
         if (topScore < cardsWon.length){
             topScore = cardsWon.length
             topMemoryScore.innerHTML = `${topScore} by ${currentPlayerName}`  
         }
+        cardScore.innerHTML = "Congratulations, You Won"   
         gameOver = true
         clearInterval(timerId)
         startBttn.textContent = 'Start'
@@ -246,6 +246,7 @@ function destroyCards(){
     while ( grid.firstChild) {
         grid.removeChild(grid.firstChild)
     }  
+    squares = undefined
 }
 //start-pause
 function startMemory(){

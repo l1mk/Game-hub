@@ -13,6 +13,7 @@ const gameSelection = document.getElementById('game-selection-layout')
 const whackIcon = document.getElementById('whack-image')
 const memoryIcon = document.getElementById('memory-image')
 const spaceIcon = document.getElementById('space-image')
+const frogIcon = document.getElementById('frogger-image')
 let gameTitle = document.getElementById('game-title')
 let currentPlayerNameText = document.getElementById('player-name')
 let currentPlayer
@@ -29,9 +30,11 @@ let grid = document.getElementsByClassName('grid')[0]
 let border = document.getElementsByClassName('border')[0]
 let topScore = 0
 let currentTime = timeLeft.textContent
-let timerId
 let gameOver = false
+let timerId
 let squares
+let width
+    
 //After dom load initial actions
 document.addEventListener('DOMContentLoaded', () => {
     //submit form action
@@ -89,6 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
         gameTitle.innerHTML = title
         topScore = 0
         spaceGameRendering()
+        hideMenu()
+    })
+    frogIcon.addEventListener('click', function(x){
+        console.log('clicked', x)
+        let title = "Frogger"
+        fetchNewGame(title)
+        gameHud.classList.remove('hidden')
+        gameContainer.classList.remove('hidden')
+        gameTitle.innerHTML = title
+        topScore = 0
+        frogGameRendering()
         hideMenu()
     })
     //togle scores switch

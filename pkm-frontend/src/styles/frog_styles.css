@@ -1,0 +1,58 @@
+/* frogger unique game style */
+#frog_border {
+    display: flex;
+    flex-wrap: wrap;
+    height: 450px;
+    width: 450px;
+    margin: auto;
+}
+#frog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid;
+    height: 360px;
+    width: 360px;
+    margin: auto;
+    background-image: url('images/frogger/neutral.png');
+    background-size: cover;
+}
+
+#frog-grid div {
+    height: 40px;
+    width: 40px;
+}
+
+.ending-block{
+    background-image: url('images/frogger/player.png');
+    background-size: cover;
+}
+
+.starting-block{
+    background-image: url('images/frogger/pokeball.png');
+    background-size: cover;
+}
+
+.c1 {
+    background-image: url('images/frogger/tauro.png');
+    background-size: cover;
+}
+
+.c2, .c3 {
+    background-image: url('images/frogger/road.png');
+    background-size: cover;
+}
+
+.l1, .l2, .l3 {
+    background-image: url('images/frogger/log.png');
+    background-size: cover;
+}
+
+.l4, .l5 {
+    background-image: url('images/frogger/lake.png');
+    background-size: cover;
+}
+
+.frog{
+    background-image: url('images/frogger/frog.png');
+    background-size: cover;
+}

@@ -3,19 +3,17 @@ let topWhackaScore = document.getElementById('top')
 let molesScore = document.querySelector('#score-value')
 let molesHitted = 0
 let timerMove
-// const moleA = document.querySelectorAll('.moleA')
-// const moleB = document.querySelectorAll('.moleB')
 
 //div creation
 function moleDivCreation(){
     for (let i = 0; i < 42; i ++){
         let div = document.createElement('div')
         div.id = i +1
-        div.classList.add('square')
+        div.classList.add('hole')
         grid.appendChild(div)
         console.log('apended',div)
     }
-    squares = document.querySelectorAll('.square')
+    squares = document.querySelectorAll('.hole')
     //Adding click reaction to every square
     squares.forEach(element => {
         element.addEventListener('mouseup', () => {
@@ -112,6 +110,7 @@ function destroyHoles(){
         console.log('destroying divs')
         grid.removeChild(grid.lastChild);
       }
+      squares = undefined
 }
 //start-pause
 function startWhack(){

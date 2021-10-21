@@ -1,7 +1,7 @@
     //variables setup    
     const spaceScore = document.querySelector('#score-value')
     let topSpaceScore = document.querySelector('#top')
-    let width = 15
+    
     let currentShooterIndex = 202
     let currentInvaderIndex = 0
     let alienInvadersTakeDown = []
@@ -43,6 +43,7 @@
         //exit button action
         exitBttn.addEventListener('click', exitSpace)
         //class style addition
+        width = 15
         timePass = 0
         timeLeft.innerHTML = timePass
         gameOver = true
@@ -108,6 +109,10 @@
     }
 
     if (alienInvadersTakeDown.length >= alienInvaders.length){
+        if (topScore < enemiesHitted + timePass){
+            topScore = enemiesHitted + timePass
+            topSpaceScore.innerHTML = `Finish in ${topScore} by ${currentPlayerName}`
+        }
         spaceScore.textContent = 'You Win'
         alert('Good Job')
         clearInterval(invaderId)
@@ -115,11 +120,7 @@
         startBttn.textContent = 'Start'
         document.removeEventListener('keyup', shoot)
         document.removeEventListener('keydown', moveShooter)
-        if (topScore < enemiesHitted + timePass){
-            topScore = enemiesHitted + timePass
-            topSpaceScore.innerHTML = `Finish in ${topScore} by ${currentPlayerName}`
-            fetchNewRecord(topScore, currentPlayer.id, currentGame.id)
-        }
+        fetchNewRecord(enemiesHitted+timePass, currentPlayer.id, currentGame.id)
 
         }
     }
@@ -171,6 +172,7 @@
         console.log('destroying divs')
         grid.removeChild(grid.lastChild);
       }
+      squares = undefined
     }
    
     //start-pause
