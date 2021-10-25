@@ -46,6 +46,7 @@
         width = 15
         timePass = 0
         timeLeft.innerHTML = timePass
+        topScore = 0
         gameOver = true
         border.id = 'space-border'
         grid.id = 'space-grid'
@@ -93,7 +94,10 @@
         }
     //gameover
     if (squares[currentShooterIndex].classList.contains('invader', 'shooter')){
+        alert('Game Over')
         spaceScore.textContent = 'Game Over'
+        document.removeEventListener('keyup', shoot)
+        document.removeEventListener('keydown', moveShooter)
         squares[currentShooterIndex].classList.remove('invader')
         squares[currentShooterIndex].classList.remove('shooter')
         squares[currentShooterIndex].classList.add('dead')
@@ -103,8 +107,10 @@
     for (let i = 0; i<=alienInvaders.length-1; i++){
         if(alienInvaders[i] > (squares.length - (width-1))){
             spaceScore.textContent = 'Game Over'
+            document.removeEventListener('keyup', shoot)
+            document.removeEventListener('keydown', moveShooter)
             clearInterval(invaderId)
-
+            return alert('Game is Over')
         }
     }
 
@@ -237,6 +243,7 @@
          clearInterval(timerId)
          enemiesHitted = 0
          molesScore.textContent = enemiesHitted
+         topScore = 0
          currentTime = 30
          startBttn.textContent = 'Start'
          destroySpace()

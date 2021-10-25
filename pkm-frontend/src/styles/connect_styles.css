@@ -1,0 +1,47 @@
+/* connect four unique game style */
+#connect-border {
+    display: flex;
+    flex-wrap: wrap;
+    height: 400px;
+    width: 400px;
+    margin: auto;
+    background-image: url('images/connect/border.png');
+    background-size: cover;
+}
+#connect-grid {
+ border: 2px solid;
+ display: flex;
+ flex-wrap: wrap;
+ height: 240px;
+ width: 280px;
+ margin: auto;
+}
+
+.grid div{
+    height: 40px;
+    width: 40px;
+}
+
+.taken {
+    background-image: url('images/connect/taken.png');
+    background-size: cover;
+}
+
+.player-one {
+    background-image: url('images/connect/a.png');
+    background-size: cover;
+}
+
+.player-two {
+    background-image: url('images/connect/b.png');
+    background-size: cover;
+}
+
+.red {
+    color: red;
+}
+
+.blue {
+    color: blue;
+}
+

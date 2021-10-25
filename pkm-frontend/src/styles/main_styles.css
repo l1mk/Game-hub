@@ -125,7 +125,7 @@ p {
 #whack-image:hover {
     border-style: solid;
     border-color: white;
-    border-width: 2px;
+    border-width: 1px;
 }
 
 #memory-image {
@@ -142,7 +142,7 @@ p {
 #memory-image:hover {
     border-style: solid;
     border-color: white;
-    border-width: 2px;
+    border-width: 1px;
 }
 
 #space-image {
@@ -159,7 +159,7 @@ p {
 #space-image:hover {
     border-style: solid;
     border-color: white;
-    border-width: 2px;
+    border-width: 1px;
 }
 
 #frogger-image {
@@ -175,7 +175,23 @@ p {
 #frogger-image:hover {
     border-style: solid;
     border-color: white;
-    border-width: 2px;
+    border-width: 1px;
+}
+
+#connect-image {
+    /* margin-top: 25px;
+    margin-left: 30px; */
+    margin: 3%;
+    width: 150px;
+    height: 150px;
+    border-radius: 10px;
+    background-image: url('images/connect/connect_icon.png');
+    background-size: cover;
+}
+#connect-image:hover {
+    border-style: solid;
+    border-color: white;
+    border-width: 1px;
 }
 
 #score-title {

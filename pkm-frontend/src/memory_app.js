@@ -177,6 +177,7 @@ function memoryGameRendering(){
     //class style addition
     border.id = 'memory-border'
     grid.id = 'memory-grid'
+    topScore = 0
     gameOver = true
     topMemoryScore.innerHTML = 0
     console.log('game rendering')
@@ -288,6 +289,7 @@ function exitMemory(){
      resetMemory()
      gameOver = true
      clearInterval(timerId)
+     topScore = 0
      currentTime = 30
      startBttn.textContent = 'Start'
      destroyCards()

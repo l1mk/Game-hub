@@ -39,6 +39,7 @@ function whackGameRendering(){
     //exit button action
     exitBttn.addEventListener('click', exitWhack)
     //class style addition
+    topScore = 0
     gameOver = true
     border.id = 'whack-border'
     grid.id = 'whack-grid'
@@ -156,6 +157,7 @@ function exitWhack(){
      gameOver = true
      clearInterval(timerId)
      clearInterval(timerMove)
+     topScore = 0
      molesHitted = 0
      molesScore.textContent = molesHitted
      currentTime = 30

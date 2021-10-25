@@ -14,6 +14,7 @@ const whackIcon = document.getElementById('whack-image')
 const memoryIcon = document.getElementById('memory-image')
 const spaceIcon = document.getElementById('space-image')
 const frogIcon = document.getElementById('frogger-image')
+const connectIcon = document.getElementById('connect-image')
 let gameTitle = document.getElementById('game-title')
 let currentPlayerNameText = document.getElementById('player-name')
 let currentPlayer
@@ -103,6 +104,17 @@ document.addEventListener('DOMContentLoaded', () => {
         gameTitle.innerHTML = title
         topScore = 0
         frogGameRendering()
+        hideMenu()
+    })
+    connectIcon.addEventListener('click', function(x){
+        console.log('clicked', x)
+        let title = "Connect Four"
+        fetchNewGame(title)
+        gameHud.classList.remove('hidden')
+        gameContainer.classList.remove('hidden')
+        gameTitle.innerHTML = title
+        topScore = 0
+        connectGameRendering()
         hideMenu()
     })
     //togle scores switch

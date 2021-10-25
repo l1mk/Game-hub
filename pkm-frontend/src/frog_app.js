@@ -52,9 +52,10 @@ function frogDivCreation(){
     logsLeft = document.querySelectorAll('.log-left')
     logsRight = document.querySelectorAll('.log-right')
 }
-
+//game rendering
 function frogGameRendering(){
     frogDivCreation()
+    topScore = 0
     currentTime = 30
     width = 9
     timeLeft.textContent = currentTime
